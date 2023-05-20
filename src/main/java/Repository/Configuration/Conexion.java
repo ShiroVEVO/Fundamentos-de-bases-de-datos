@@ -17,15 +17,16 @@ public class Conexion {
     public void conectar() throws SQLException {
         try {
             Class.forName(DRIVER);
-            conn = DriverManager.getConnection(URL,USER,PASS);
-            logger.info("Funciona, Viva cristo rey, la sangre de cristo tiene poder");
-        }catch (Exception e){
+            conn = DriverManager.getConnection(URL, USER, PASS);
+            logger.info("Funciona la conexión, Viva cristo rey");
+        } catch (Exception e) {
             logger.info("Problema:" + e);
         }
     }
+
     public void desconectar() throws SQLException {
-        if(conn != null){
-            if(!conn.isClosed()){
+        if (conn != null) {
+            if (!conn.isClosed()) {
                 conn.close();
             }
         }

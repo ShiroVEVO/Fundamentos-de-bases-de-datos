@@ -8,6 +8,13 @@ public class Ciudad {
     Timestamp InicioServicio;
     Timestamp FinalServicio;
 
+    public Ciudad(int ID, String Nom, Timestamp fi, Timestamp ff) {
+        this.IDCiudad = ID;
+        this.Nombre = Nom;
+        this.InicioServicio = fi;
+        this.FinalServicio = ff;
+    }
+
     public int getIDCiudad() {
         return IDCiudad;
     }

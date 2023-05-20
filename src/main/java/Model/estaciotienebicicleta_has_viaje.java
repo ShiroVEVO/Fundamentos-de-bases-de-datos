@@ -1,5 +1,5 @@
 package Model;
 
-public class estaciotienebicicleta_has_viaje {
+public class Estaciotienebicicleta_has_viaje {
 
 }

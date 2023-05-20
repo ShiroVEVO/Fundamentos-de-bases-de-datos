@@ -1,5 +1,5 @@
 package Model;
 
-public class formapago {
+public class Formapago {
     
 }
