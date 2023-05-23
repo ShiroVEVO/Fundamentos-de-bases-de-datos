@@ -1,0 +1,158 @@
+package main.Repository.Implementations;
+
+import main.Model.Usuario;
+import main.Repository.IDao;
+import main.Repository.Configuration.Conexion;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
+import org.springframework.stereotype.Service;
+
+//@Service
+public class UsuarioDAOpostgres implements IDao<Usuario> {
+    private Conexion conexion = new Conexion();
+    private PreparedStatement consulta = null;
+    private static final Logger logger = Logger.getLogger(UsuarioDAOpostgres.class.getName());
+
+    private static final String createTable = "CREATE TABLE IF NOT EXISTS mydb.Usuario ("
+            + "k_NumIdentificacion INT NOT NULL,"
+            + "n_TipoIdentificacion VARCHAR(15) NOT NULL,"
+            + "f_fechaNacimiento TIMESTAMP NOT NULL,"
+            + "n_Nacionalidad VARCHAR(20) NOT NULL,"
+            + "v_NumCelular BIGINT NOT NULL,"
+            + "i_Sexo CHAR(1) NOT NULL,"
+            + "n_Eps VARCHAR(20) NOT NULL,"
+            + "n_PrimerNombre VARCHAR(25) NOT NULL,"
+            + "n_SegundoNombre VARCHAR(25) NULL,"
+            + "n_PrimerApellido VARCHAR(25) NOT NULL,"
+            + "n_SegundoApellido VARCHAR(25) NULL,"
+            + "Cuenta_k_Cuenta INT NOT NULL,"
+            + "PRIMARY KEY (k_NumIdentificacion),"
+            + "CONSTRAINT fk_Usuario_Cuenta1"
+            + "FOREIGN KEY (Cuenta_k_Cuenta)"
+            + "REFERENCES mydb.Cuenta (k_Cuenta)"
+            + "ON DELETE NO ACTION"
+            + "ON UPDATE NO ACTION);"
+            + "CREATE INDEX fk_Usuario_Cuenta1_idx"
+            + "ON mydb.Usuario (Cuenta_k_Cuenta);";
+    private static final String select = "SELECT * FROM mydb.usuario;";
+    private static final String select_with_id = "SELECT * FROM mydb.usuario WHERE k_numidentificacion = ?;";
+    private static final String insert = "INSERT INTO mydb.usuario VALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
+    private static final String delete = "DELETE FROM mydb.usuario WHERE k_numidentificacion = ?;";
+    private static final String update = "UPDATE mydb.usuario SET n_tipoidentificacion = ?, f_fechanacimiento = ?,"
+            + "n_nacionalidad = ?, v_numcelular = ?, i_sexo = ?, n_eps = ?,"
+            + "n_primernombre = ?, n_segundonombre = ?, n_primerapellido = ?,"
+            + "n_segundoapellido = ?, cuenta_k_cuenta = ? WHERE k_numidentificacion = ?;";
+
+    @Override
+    public void CrearTabla() throws SQLException {
+        conexion.conectar();
+        Statement consulta = null;
+        try {
+            consulta = conexion.conn.createStatement();
+            consulta.execute(createTable);
+            logger.info("Se creó la tabla");
+        } catch (Exception e) {
+            logger.info("No se creó la tabla: " + e);
+        } finally {
+            consulta.close();
+            conexion.desconectar();
+        }
+    }
+
+    @Override
+    public List<Usuario> listarTodos() throws SQLException {
+        Statement consulta = null;
+        ResultSet resultados = null;
+        List<Usuario> ListaUsuarios = new ArrayList<>();
+        try {
+            conexion.conectar();
+            consulta = conexion.conn.createStatement();
+            resultados = consulta.executeQuery(select);
+
+            while (resultados.next()) {
+                int numIdentificacion = resultados.getInt(1);
+                String tipoIdentificacion = resultados.getString(2);
+                java.sql.Timestamp fechaNacimiento = resultados.getTimestamp(3);
+                String nacionalidad = resultados.getString(4);
+                int numCelular = resultados.getInt(5);
+                char sexo = resultados.getString(6).charAt(0);
+                String eps = resultados.getString(7);
+                String primerNombre = resultados.getString(8);
+                String segundoNombre = resultados.getString(9);
+                String primerApellido = resultados.getString(10);
+                String segundoApellido = resultados.getString(11);
+                int cuenta_k_cuenta = resultados.getInt(12);
+                Usuario usuario = new Usuario(numIdentificacion, numCelular, cuenta_k_cuenta, tipoIdentificacion,
+                        nacionalidad, eps, primerNombre, segundoNombre, primerApellido, segundoApellido,
+                        fechaNacimiento, sexo);
+                logger.info("Se trajo un usuario: " + usuario);
+                ListaUsuarios.add(usuario);
+            }
+        } catch (Exception e) {
+            logger.info("Se presento un error al listar usuarios, " + e);
+        } finally {
+            resultados.close();
+            consulta.close();
+            conexion.desconectar();
+        }
+        return ListaUsuarios;
+    }
+
+    @Override
+    public Usuario listar(int id) throws SQLException {
+        ResultSet resultados = null;
+        Usuario usuario = null;
+        try {
+            conexion.conectar();
+            consulta = conexion.conn.prepareStatement(select_with_id);
+            consulta.setInt(1, id);
+            resultados = consulta.executeQuery();
+            if (resultados.next()) {
+                int numIdentificacion = resultados.getInt(1);
+                String tipoIdentificacion = resultados.getString(2);
+                java.sql.Timestamp fechaNacimiento = resultados.getTimestamp(3);
+                String nacionalidad = resultados.getString(4);
+                int numCelular = resultados.getInt(5);
+                char sexo = resultados.getString(6).charAt(0);
+                String eps = resultados.getString(7);
+                String primerNombre = resultados.getString(8);
+                String segundoNombre = resultados.getString(9);
+                String primerApellido = resultados.getString(10);
+                String segundoApellido = resultados.getString(11);
+                int cuenta_k_cuenta = resultados.getInt(12);
+                usuario = new Usuario(numIdentificacion, numCelular, cuenta_k_cuenta, tipoIdentificacion, nacionalidad,
+                        eps, primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, sexo);
+                logger.info("Se trajo el usuario con identificacion: " + numIdentificacion + ": " + usuario);
+            }
+        } catch (Exception e) {
+            logger.info("Se presento un error al traer el usuario con identificacion: " + id + " ," + e);
+        } finally {
+            resultados.close();
+            consulta.close();
+            conexion.desconectar();
+        }
+        return usuario;
+    }
+
+    @Override
+    public Usuario agregar(Usuario usuario) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void eliminar(int id) throws SQLException {
+
+    }
+
+    @Override
+    public Usuario actualizar(Usuario ciudad) throws SQLException {
+        return null;
+    }
+
+}

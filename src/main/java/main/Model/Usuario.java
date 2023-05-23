@@ -1,15 +1,15 @@
 package main.Model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class Usuario {
-    int identificacion;
-    int numCelular, cuenta_k_cuenta;
+    int identificacion, cuenta_k_cuenta;
+    long numCelular;
     String tipoIdentificacion, nacionalidad, eps, primerNombre, segundoNombre, primerApellido, segundoApellido;
     Timestamp fechaNacimiento;
     char sexo;
 
-    public Usuario(int identificacion, int numCelular, int cuenta_k_cuenta, String tipoIdentificacion,
+    public Usuario(int identificacion, long numCelular, int cuenta_k_cuenta, String tipoIdentificacion,
             String nacionalidad, String eps, String primerNombre, String segundoNombre, String primerApellido,
             String segundoApellido, Timestamp fechaNacimiento, char sexo) {
         this.identificacion = identificacion;
@@ -34,11 +34,11 @@ public class Usuario {
         this.identificacion = identificacion;
     }
 
-    public int getNumCelular() {
+    public long getNumCelular() {
         return numCelular;
     }
 
-    public void setNumCelular(int numCelular) {
+    public void setNumCelular(long numCelular) {
         this.numCelular = numCelular;
     }
 

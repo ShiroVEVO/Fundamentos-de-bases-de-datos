@@ -32,7 +32,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     private static final String update = "UPDATE mydb.ciudad SET n_ciudad = ?, f_inicioservicio = ?, f_finalservicio = ? WHERE k_ciudad = ?;";
 
     @Override
-    public void CrearTabla() throws SQLException { // FUNCIONAl
+    public void CrearTabla() throws SQLException { // NO PROBADO
         conexion.conectar();
         Statement consulta = null;
         try {
@@ -48,7 +48,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     }
 
     @Override
-    public List<Ciudad> listarTodos() throws SQLException { // FUNCIONAL
+    public List<Ciudad> listarTodos() throws SQLException { // NO PROBADO
         Statement consulta = null;
         ResultSet resultados = null;
         List<Ciudad> ListaCiudades = new ArrayList<>();
@@ -67,7 +67,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
                 ListaCiudades.add(ciudad);
             }
         } catch (Exception e) {
-            logger.info("Se presento un error al listar odontologos, " + e);
+            logger.info("Se presento un error al listar ciudades, " + e);
         } finally {
             resultados.close();
             consulta.close();
@@ -77,7 +77,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     }
 
     @Override
-    public Ciudad listar(int id) throws SQLException { // FUNCIONAL
+    public Ciudad listar(int id) throws SQLException { // NO PROBADO
         ResultSet resultados = null;
         Ciudad ciudad = null;
         try {
@@ -104,7 +104,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     }
 
     @Override
-    public void agregar(Ciudad ciudad) throws SQLException { // FUNCIONAL
+    public Ciudad agregar(Ciudad ciudad) throws SQLException { // NO PROBADO
         try {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(insert);
@@ -120,11 +120,11 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
             consulta.close();
             conexion.desconectar();
         }
+        return ciudad;
     }
 
     @Override
-    public void eliminar(int id) throws SQLException {// FUNCIONAL
-
+    public void eliminar(int id) throws SQLException { // NO PROBADO
         try {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(delete);
@@ -139,7 +139,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     }
 
     @Override
-    public Ciudad actualizar(Ciudad ciudad) throws SQLException {
+    public Ciudad actualizar(Ciudad ciudad) throws SQLException { // NO PROBADO
         try {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(update);

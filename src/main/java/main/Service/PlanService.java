@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import main.Model.Ciudad;
+import main.Model.Plan;
 import main.Repository.IDao;
 
 @Service
-public class CiudadService {
+public class PlanService {
     @Autowired
     private IDao DaoParticular;
 
-    public CiudadService(IDao DAOpart) {
+    public PlanService(IDao DAOpart) {
         this.DaoParticular = DAOpart;
     }
 
@@ -23,25 +23,25 @@ public class CiudadService {
         DaoParticular.CrearTabla();
     }
 
-    public Ciudad listarCiudad(int ID) throws SQLException {
-        return (Ciudad) DaoParticular.listar(ID);
+    public Plan listarPlan(int ID) throws SQLException {
+        return (Plan) DaoParticular.listar(ID);
     }
 
-    public List<Ciudad> listarCiudades() throws SQLException {
+    public List<Plan> listarPlanes() throws SQLException {
         return DaoParticular.listarTodos();
     }
 
-    public Ciudad guardarCiudad(Ciudad Ciudad) throws SQLException {
-        DaoParticular.agregar(Ciudad);
-        return Ciudad;
+    public Plan guardarPlan(Plan plan) throws SQLException {
+        DaoParticular.agregar(plan);
+        return plan;
     }
 
-    public void eliminarCiudad(int ID) throws SQLException {
+    public void eliminarPlan(int ID) throws SQLException {
         DaoParticular.eliminar(ID);
     }
 
-    public Ciudad actualizarCiudad(Ciudad Ciudad) throws SQLException {
-        return (Ciudad) DaoParticular.actualizar(Ciudad);
+    public Plan actualizarPlan(Plan plan) throws SQLException {
+        return (Plan) DaoParticular.actualizar(plan);
     }
 
 }

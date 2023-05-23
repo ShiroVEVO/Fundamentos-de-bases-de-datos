@@ -10,7 +10,7 @@ public interface IDao<T> {
 
     public T listar(int id) throws SQLException;
 
-    public void agregar(T t) throws SQLException;
+    public T agregar(T t) throws SQLException;
 
     public void eliminar(int id) throws SQLException;
 

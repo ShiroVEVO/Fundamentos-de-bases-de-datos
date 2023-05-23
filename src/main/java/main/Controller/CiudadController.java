@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
-
 @RequestMapping("/ciudad")
 public class CiudadController {
     private final CiudadService ciudadService;
@@ -23,7 +22,7 @@ public class CiudadController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Ciudad>> listarCiudades() throws SQLException {
+    public ResponseEntity<List<Ciudad>> listarCiudades() throws SQLException { // FUNCIONAL
         ResponseEntity response;
         if (ciudadService.listarCiudades() == null) {
             response = new ResponseEntity(HttpStatus.NOT_FOUND);
