@@ -9,14 +9,15 @@ import org.springframework.stereotype.Service;
 
 import main.Model.Plan;
 import main.Repository.IDao;
+import main.Repository.Implementations.PlanDAOpostgres;
 
 @Service
 public class PlanService {
-    @Autowired
     private IDao DaoParticular;
 
+    @Autowired
     public PlanService(IDao DAOpart) {
-        this.DaoParticular = DAOpart;
+        this.DaoParticular = new PlanDAOpostgres();
     }
 
     public void crearTabla() throws SQLException {

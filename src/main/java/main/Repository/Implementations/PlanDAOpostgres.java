@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import org.springframework.stereotype.Service;
 
-//@Service
+@Service
 public class PlanDAOpostgres implements IDao<Plan> {
     private Conexion conexion = new Conexion();
     private PreparedStatement consulta = null;

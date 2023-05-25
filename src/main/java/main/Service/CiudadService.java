@@ -9,14 +9,15 @@ import org.springframework.stereotype.Service;
 
 import main.Model.Ciudad;
 import main.Repository.IDao;
+import main.Repository.Implementations.CiudadDAOpostgres;
 
 @Service
 public class CiudadService {
-    @Autowired
     private IDao DaoParticular;
 
+    @Autowired
     public CiudadService(IDao DAOpart) {
-        this.DaoParticular = DAOpart;
+        this.DaoParticular = new CiudadDAOpostgres(); // INYECCIÓN DEL DAO
     }
 
     public void crearTabla() throws SQLException {
