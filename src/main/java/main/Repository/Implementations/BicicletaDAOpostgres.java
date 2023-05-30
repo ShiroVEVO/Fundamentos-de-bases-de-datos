@@ -14,22 +14,20 @@ import java.util.logging.Logger;
 import org.springframework.stereotype.Service;
 
 //@Service
-public class CiudadDAOpostgres implements IDao<Bicicleta> {
+public class BicicletaDAOpostgres implements IDao<Bicicleta> {
     private Conexion conexion = new Conexion();
     private PreparedStatement consulta = null;
     private static final Logger logger = Logger.getLogger(CiudadDAOpostgres.class.getName());
 
-    private static final String createTable = "CREATE TABLE IF NOT EXISTS mydb.Ciudad ("
-            + "k_Ciudad INT NOT NULL,"
-            + "n_Ciudad VARCHAR(40) NOT NULL,"
-            + "f_InicioServicio TIMESTAMP NULL,"
-            + "f_FinalServicio TIMESTAMP NOT NULL,"
-            + "PRIMARY KEY (k_Ciudad));";
-    private static final String select = "SELECT * FROM mydb.ciudad;";
-    private static final String select_with_id = "SELECT * FROM mydb.ciudad WHERE k_ciudad = ?;";
-    private static final String insert = "INSERT INTO mydb.ciudad VALUES(?,?,?,?);";
-    private static final String delete = "DELETE FROM mydb.ciudad WHERE k_ciudad = ?;";
-    private static final String update = "UPDATE mydb.ciudad SET n_ciudad = ?, f_inicioservicio = ?, f_finalservicio = ? WHERE k_ciudad = ?;";
+    private static final String createTable = "CREATE TABLE IF NOT EXISTS mydb.Bicicleta("
+            + "k_Bicicleta INT NOT NULL,"
+            + "n_Tipo VARCHAR(40) NOT NULL,"
+            + "PRIMARY KEY (k_Bicicleta));";
+    private static final String select = "SELECT * FROM mydb.bicicleta;";
+    private static final String select_with_id = "SELECT * FROM mydb.bicicleta WHERE k_bibicleta = ?;";
+    private static final String insert = "INSERT INTO mydb.ciudad VALUES(?,?);";
+    private static final String delete = "DELETE FROM mydb.ciudad WHERE k_bicicleta= ?;";
+    private static final String update = "UPDATE mydb.localidad SET n_tipo = ? WHERE k_ciudad = ?;";
 
     @Override
     public void CrearTabla() throws SQLException {
@@ -51,35 +49,33 @@ public class CiudadDAOpostgres implements IDao<Bicicleta> {
     public List<Bicicleta> listarTodos() throws SQLException { // FUNCIONAL
         Statement consulta = null;
         ResultSet resultados = null;
-        List<Bicicleta> ListaCiudades = new ArrayList<>();
+        List<Bicicleta> ListaBicicletas = new ArrayList<>();
         try {
             conexion.conectar();
             consulta = conexion.conn.createStatement();
             resultados = consulta.executeQuery(select);
 
             while (resultados.next()) {
-                int IDCiudad = resultados.getInt(1);
-                String Nombre = resultados.getString(2);
-                java.sql.Timestamp InicioServicio = resultados.getTimestamp(3);
-                java.sql.Timestamp FinServicio = resultados.getTimestamp(4);
-                Bicicleta ciudad = new Bicicleta(IDCiudad, Nombre, InicioServicio, FinServicio);
-                logger.info("Se trajo una ciudad: " + ciudad);
-                ListaCiudades.add(ciudad);
+                int IDBicicleta = resultados.getInt(1);
+                String Tipo = resultados.getString(2);
+                Bicicleta bicicleta = new Bicicleta(IDBicicleta, Tipo);
+                logger.info("Se trajo una bibicleta: " + bicicleta);
+                ListaBicicletas.add(bicicleta);
             }
         } catch (Exception e) {
-            logger.info("Se presento un error al listar ciudades, " + e);
+            logger.info("Se presento un error al listar bicicletas, " + e);
         } finally {
             resultados.close();
             consulta.close();
             conexion.desconectar();
         }
-        return ListaCiudades;
+        return ListaBicicletas;
     }
 
     @Override
     public Bicicleta listar(int id) throws SQLException { // FUNCIONAL
         ResultSet resultados = null;
-        Bicicleta ciudad = null;
+        Bicicleta bicicleta = null;
         try {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(select_with_id);
@@ -87,11 +83,9 @@ public class CiudadDAOpostgres implements IDao<Bicicleta> {
             resultados = consulta.executeQuery();
             if (resultados.next()) {
                 int IDCiudad = resultados.getInt(1);
-                String Nombre = resultados.getString(2);
-                java.sql.Timestamp inicioServicio = resultados.getTimestamp(3);
-                java.sql.Timestamp finalServicio = resultados.getTimestamp(4);
-                ciudad = new Bicicleta(IDCiudad, Nombre, inicioServicio, finalServicio);
-                logger.info("Se trajo la ciudad con id: " + IDCiudad + ": " + ciudad);
+                String Tipo = resultados.getString(2);
+                bicicleta = new Bicicleta(IDCiudad, Tipo);
+                logger.info("Se trajo la bicicleta con id: " + IDCiudad + ": " + bicicleta);
             }
         } catch (Exception e) {
             logger.info("Se presento un error al traer la ciudad con id: " + id + " ," + e);
@@ -100,27 +94,25 @@ public class CiudadDAOpostgres implements IDao<Bicicleta> {
             consulta.close();
             conexion.desconectar();
         }
-        return ciudad;
+        return bicicleta;
     }
 
     @Override
-    public Bicicleta agregar(Bicicleta ciudad) throws SQLException { // FUNCIONAL
-        try {
+    public Bicicleta agregar(Bicicleta bicicleta) throws SQLException { // FUNCIONAL
+        try {   //Consultar Nombres modelo
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(insert);
-            consulta.setInt(1, ciudad.getIDCiudad());
-            consulta.setString(2, ciudad.getNombre());
-            consulta.setTimestamp(3, ciudad.getInicioServicio());
-            consulta.setTimestamp(4, ciudad.getFinalServicio());
+            consulta.setInt(1, bicicleta.getIDCiudad());
+            consulta.setString(2, bicicleta.getNombre());
             consulta.execute();
-            logger.info("Se guardo la ciudad:" + ciudad.toString());
+            logger.info("Se guardo la bicicleta:" + bicicleta.toString());
         } catch (Exception e) {
             logger.warning("No se pudo guardar la ciudad, " + e);
         } finally {
             consulta.close();
             conexion.desconectar();
         }
-        return ciudad;
+        return bicicleta;
     }
 
     @Override
@@ -130,32 +122,30 @@ public class CiudadDAOpostgres implements IDao<Bicicleta> {
             consulta = conexion.conn.prepareStatement(delete);
             consulta.setInt(1, id);
             consulta.executeUpdate();
-            logger.info("Se eliminó la ciudad con ID: " + id);
+            logger.info("Se eliminó la bicicleta con ID: " + id);
         } catch (Exception e) {
-            logger.warning("No se pudo eliminar la ciudad, " + e);
+            logger.warning("No se pudo eliminar la bicicleta, " + e);
         } finally {
             conexion.desconectar();
         }
     }
 
     @Override
-    public Bicicleta actualizar(Bicicleta ciudad) throws SQLException { // FUNCIONAL
+    public Bicicleta actualizar(Bicicleta bicicleta) throws SQLException { // FUNCIONAL
         try {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(update);
-            consulta.setString(1, ciudad.getNombre());
-            consulta.setTimestamp(2, ciudad.getInicioServicio());
-            consulta.setTimestamp(3, ciudad.getFinalServicio());
-            consulta.setInt(4, ciudad.getIDCiudad());
+            consulta.setString(1, bicicleta.getNombre()); //Consultar nombres model
+            consulta.setTimestamp(2, bicicleta.getInicioServicio());
             consulta.executeUpdate();
-            logger.info("se actualizó la ciudad " + ciudad.getIDCiudad() + " a " + ciudad);
+            logger.info("se actualizó la bicicleta " + bicicleta.getIDCiudad() + " a " + bicicleta);
         } catch (Exception e) {
-            logger.warning("No se pudo actualizar la ciudad, " + e);
+            logger.warning("No se pudo actualizar la bicileta, " + e);
         } finally {
             consulta.close();
             conexion.desconectar();
         }
-        return ciudad;
+        return bicicleta;
     }
 
 }

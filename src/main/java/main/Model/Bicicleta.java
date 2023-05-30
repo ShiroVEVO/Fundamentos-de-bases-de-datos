@@ -2,13 +2,13 @@ package main.Model;
 
 import java.sql.Timestamp;
 
-public class Ciudad {
+public class Bicicleta {
     int IDCiudad;
     String Nombre;
     Timestamp InicioServicio;
     Timestamp FinalServicio;
 
-    public Ciudad(int ID, String Nom, Timestamp fi, Timestamp ff) {
+    public Bicicleta(int ID, String Nom, Timestamp fi, Timestamp ff) {
         this.IDCiudad = ID;
         this.Nombre = Nom;
         this.InicioServicio = fi;

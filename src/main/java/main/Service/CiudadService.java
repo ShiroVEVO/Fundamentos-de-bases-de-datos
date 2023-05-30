@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.Model.Ciudad;
+import main.Model.Bicicleta;
 import main.Repository.IDao;
 import main.Repository.Implementations.CiudadDAOpostgres;
 
@@ -23,15 +23,15 @@ public class CiudadService {
         DaoParticular.CrearTabla();
     }
 
-    public Ciudad listarCiudad(int ID) throws SQLException {
-        return (Ciudad) DaoParticular.listar(ID);
+    public Bicicleta listarCiudad(int ID) throws SQLException {
+        return (Bicicleta) DaoParticular.listar(ID);
     }
 
-    public List<Ciudad> listarCiudades() throws SQLException {
+    public List<Bicicleta> listarCiudades() throws SQLException {
         return DaoParticular.listarTodos();
     }
 
-    public Ciudad guardarCiudad(Ciudad Ciudad) throws SQLException {
+    public Bicicleta guardarCiudad(Bicicleta Ciudad) throws SQLException {
         DaoParticular.agregar(Ciudad);
         return Ciudad;
     }
@@ -40,8 +40,8 @@ public class CiudadService {
         DaoParticular.eliminar(ID);
     }
 
-    public Ciudad actualizarCiudad(Ciudad Ciudad) throws SQLException {
-        return (Ciudad) DaoParticular.actualizar(Ciudad);
+    public Bicicleta actualizarCiudad(Bicicleta Ciudad) throws SQLException {
+        return (Bicicleta) DaoParticular.actualizar(Ciudad);
     }
 
 }
