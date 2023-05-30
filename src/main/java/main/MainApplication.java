@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import main.Model.Ciudad;
+import main.Model.Bicicleta;
 import main.Model.Plan;
 import main.Repository.Implementations.CiudadDAOpostgres;
 import main.Repository.Implementations.PlanDAOpostgres;
@@ -42,8 +42,8 @@ public class MainApplication {
 		// ciudadService.eliminarCiudad(3);
 		Timestamp ti = new Timestamp(120319);
 		Timestamp tf = new Timestamp(1231041);
-		Ciudad c1 = new Ciudad(6, "Cucuta", ti, tf);
-		Ciudad c2 = new Ciudad(6, "OIGA MIRE VEA, VENGASE A CALI", ti, tf);
+		Bicicleta c1 = new Bicicleta(6, "Cucuta", ti, tf);
+		Bicicleta c2 = new Bicicleta(6, "OIGA MIRE VEA, VENGASE A CALI", ti, tf);
 		// ciudadService.guardarCiudad(c1);
 		// ciudadService.eliminarCiudad(6);
 		// ciudadService.actualizarCiudad(c2);
