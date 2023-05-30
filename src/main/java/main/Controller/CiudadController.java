@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import main.Model.Ciudad;
+import main.Model.Bicicleta;
 import main.Service.CiudadService;
 
 import java.sql.SQLException;
@@ -22,7 +22,7 @@ public class CiudadController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Ciudad>> listarCiudades() throws SQLException { // FUNCIONAL
+    public ResponseEntity<List<Bicicleta>> listarCiudades() throws SQLException { // FUNCIONAL
         ResponseEntity response;
         if (ciudadService.listarCiudades() == null) {
             response = new ResponseEntity(HttpStatus.NOT_FOUND);
@@ -44,7 +44,7 @@ public class CiudadController {
     }
 
     @PostMapping("/guardar")
-    public ResponseEntity guardarCiudad(@RequestBody Ciudad ciudad) throws SQLException {
+    public ResponseEntity guardarCiudad(@RequestBody Bicicleta ciudad) throws SQLException {
         ResponseEntity response;
         if (ciudadService.listarCiudad(ciudad.getIDCiudad()) != null) {
             response = new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -67,7 +67,7 @@ public class CiudadController {
     }
 
     @PutMapping("/actualizar")
-    public ResponseEntity<Ciudad> actualizarCiudad(@RequestBody Ciudad ciudad)
+    public ResponseEntity<Bicicleta> actualizarCiudad(@RequestBody Bicicleta ciudad)
             throws SQLException {
         ResponseEntity response = null;
         System.out.println(ciudad);
