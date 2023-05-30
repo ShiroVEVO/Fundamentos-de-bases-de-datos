@@ -65,20 +65,9 @@ public class LocalidadDAOpostgres implements IDao<localidad> {
             while (resultados.next()) {
                 int localidad = resultados.getInt(1);
                 String nombre = resultados.getString(2);
-                //int localidad = resultados.getInt(1);
-                
-                int numCelular = resultados.getInt(5);
-                char sexo = resultados.getString(6).charAt(0);
-                String eps = resultados.getString(7);
-                String primerNombre = resultados.getString(8);
-                String segundoNombre = resultados.getString(9);
-                String primerApellido = resultados.getString(10);
-                String segundoApellido = resultados.getString(11);
-                int cuenta_k_cuenta = resultados.getInt(12);
-                Localidad localidad = new Localidad(localidad, numCelular, cuenta_k_cuenta, nameLocalidad,
-                        nacionalidad, eps, primerNombre, segundoNombre, primerApellido, segundoApellido,
-                        fechaNacimiento, sexo);
-                logger.info("Se trajo un localidad: " + localidad);
+                int ciudad_k_ciudad = resultados.getInt(3); //verificar nombre Modelo
+                Localidad localidad = new Localidad(localidad, nombre, ciudad_k_ciudad);
+                logger.info("Se trajo una localidad: " + localidad);
                 Listalocalidades.add(localidad);
             }
         } catch (Exception e) {
