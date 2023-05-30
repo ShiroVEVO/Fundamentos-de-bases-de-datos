@@ -1,36 +1,39 @@
 window.onload = function(){
-fetch("/odontologo")
+    
+fetch("/cuenta")
 .then(function(response){
     return response.json();})
 .then(function(data){
-    let tablaOdontologos = document.querySelector("#BodyTablaOdontologos");
+    let tablaCuentas = document.querySelector("#BodyTablaCuentas");
+    console.log(tablaCuentas);
     for(let i = 0; i < data.length; i++){
-        tablaOdontologos.innerHTML +=
-        "<tr id=\"registroOdontologoKey" + data[i].matricula + "\">" +
-            "<th>" + data[i].matricula + "</th>" +
-            "<th>" + data[i].user + "</th>" +
-            "<th>" + data[i].password + "</th>" +
-            "<th>" + data[i].nombre + "</th>" +
-            "<th>" + data[i].apellido + "</th>" +
-            "<th><input type=\"button\" class=\"btn btn-primary btnActualizarOdontologo\" id=\"" + data[i].matricula + "\" value=\"✏\"></input></th>" +
-            "<th><input type=\"button\" class=\"btn btn-danger btnEliminarOdontologo\" id=\"" + data[i].matricula + "\" value=\"❌\"></input></th>" +
+        tablaCuentas.innerHTML +=
+        "<tr id=\"registroCuentaKey" + data[i].k_cuenta + "\">" +
+            "<th>" + data[i].plan_k_plan + "</th>" +
+            "<th>" + data[i].saldoFinal + "</th>" +
+            "<th>" + data[i].saldoInicial + "</th>" +
+            "<th>" + data[i].estado + "</th>" +
+            "<th>" + data[i].contraseña + "</th>" +
+            "<th>" + data[i].correoElectronico + "</th>" +
+            "<th><input type=\"button\" class=\"btn btn-primary btnActualizarCuenta\" id=\"" + data[i].plan_k_plan + "\" value=\"✏\"></input></th>" +
+            "<th><input type=\"button\" class=\"btn btn-danger btnEliminarCuenta\" id=\"" + data[i].plan_k_plan + "\" value=\"❌\"></input></th>" +
         "</tr>";
     }
-    let botonesEliminarOdontologo = document.querySelectorAll('.btnEliminarOdontologo');
-    for(let i = 0; i < botonesEliminarOdontologo.length; i++){
-        botonesEliminarOdontologo[i].addEventListener("click",function(){
-            borrarOdontologo(botonesEliminarOdontologo[i].attributes[2].value);
+    let botonesEliminarCuenta = document.querySelectorAll('.btnEliminarCuenta');
+    for(let i = 0; i < botonesEliminarCuenta.length; i++){
+        botonesEliminarCuenta[i].addEventListener("click",function(){
+            borrarCuenta(botonesEliminarCuenta[i].attributes[2].value);
         });
     }
-    let botonesActualizarOdontologo = document.querySelectorAll('.btnActualizarOdontologo');
-        for(let i = 0; i < botonesActualizarOdontologo.length; i++){
-            botonesActualizarOdontologo[i].addEventListener("click",function(){
-                actualizarOdontologo(botonesActualizarOdontologo[i].attributes[2].value);
+    let botonesActualizarCuenta = document.querySelectorAll('.btnActualizarCuenta');
+        for(let i = 0; i < botonesActualizarCuenta.length; i++){
+            botonesActualizarCuenta[i].addEventListener("click",function(){
+                actualizarCuenta(botonesActualizarCuenta[i].attributes[2].value);
             });
         }
 })
 
-fetch("/paciente")
+fetch("/usuario")
 .then(function(response){
     return response.json();})
 .then(function(data){

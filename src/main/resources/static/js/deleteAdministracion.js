@@ -1,5 +1,9 @@
-function borrarOdontologo(matricula){
-    let url = '/odontologo/borrar/' + matricula;
+
+
+// CAMBIADO
+
+function borrarCuenta(id){
+    let url = '/cuenta/borrar/' + id;
     const settings = {
         method: 'DELETE'
     }
@@ -8,12 +12,12 @@ function borrarOdontologo(matricula){
         location.reload();
         return response.json();})
     .then(function(){
-        console.log(matricula);
+        console.log(id);
     })
 }
 
-function borrarPaciente(DNI){
-    let url = '/paciente/borrar/' + DNI;
+function borrarUsuario(id){
+    let url = '/usuario/borrar/' + id;
     const settings = {
          method: 'DELETE'
     }
@@ -22,6 +26,6 @@ function borrarPaciente(DNI){
         location.reload();
         return response.json();})
     .then(function(){
-        console.log(DNI);
+        console.log(id);
     })
 }

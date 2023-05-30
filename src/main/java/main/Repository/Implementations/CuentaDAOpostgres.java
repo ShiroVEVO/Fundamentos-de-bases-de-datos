@@ -94,7 +94,7 @@ public class CuentaDAOpostgres implements IDao<Cuenta> {
     @Override
     public Cuenta listar(int id) throws SQLException { //
         ResultSet resultados = null;
-        Cuenta plan = null;
+        Cuenta cuenta = null;
         try {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(select_with_id);
@@ -108,7 +108,7 @@ public class CuentaDAOpostgres implements IDao<Cuenta> {
                 String contraseña = resultados.getString(5);
                 String correoElectronico = resultados.getString(6);
                 int plan_k_plan = resultados.getInt(7);
-                Cuenta cuenta = new Cuenta(k_cuenta, plan_k_plan, saldoFinal, saldoInicial, estado, contraseña,
+                cuenta = new Cuenta(k_cuenta, plan_k_plan, saldoFinal, saldoInicial, estado, contraseña,
                         correoElectronico);
                 logger.info("Se trajo la cuenta con id: " + id + ": " + cuenta);
             }
@@ -119,7 +119,7 @@ public class CuentaDAOpostgres implements IDao<Cuenta> {
             consulta.close();
             conexion.desconectar();
         }
-        return plan;
+        return cuenta;
     }
 
     @Override
