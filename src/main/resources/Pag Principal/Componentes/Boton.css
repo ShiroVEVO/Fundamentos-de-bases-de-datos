@@ -1,0 +1,11 @@
+.boton {
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+  
+  .boton:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
