@@ -1,5 +1,6 @@
 -- PRIMERO CREAR UNA BASE LLAMADA mydb Y SOBRE ELLA EJECUTAR ESTE SCRIPT
 
+
 CREATE SCHEMA IF NOT EXISTS mydb;
 
 CREATE TABLE IF NOT EXISTS mydb.Ciudad (
@@ -197,3 +198,6 @@ INSERT INTO mydb.usuario VALUES(1923810412,'CC','2023-05-23 12:34:56','Venezolan
 INSERT INTO mydb.usuario VALUES(1314689031,'CC','2023-05-23 12:34:56','Colombiano', 3113494567,'M','Sura','Juan','Manuel','Ortega','Sanchez',2);
 INSERT INTO mydb.usuario VALUES(1010283192,'CC','2023-05-23 12:34:56','Venezolano', 3211231689,'M','Saludcop','Santiago','Alberto','Villanueva','Lugo',3);
 INSERT INTO mydb.usuario VALUES(1679192311,'CC','2023-05-23 12:34:56','Colombiano', 3230101848,'M','Compensar','Esteban','Camilo','Paez','Mayorga',4);
+
+-- ISERSIÓN de ciudad
+INSERT INTO mydb.ciudad values (1, 'Bogotá', '2001-09-11 05:00:00', '2001-09-11 22:00:00');
