@@ -90,22 +90,12 @@ public class LocalidadDAOpostgres implements IDao<localidad> {
             consulta.setInt(1, id);
             resultados = consulta.executeQuery();
             if (resultados.next()) {
-                int numIdentificacion = resultados.getInt(1);
+                int identificacion = resultados.getInt(1);
                 String tipoIdentificacion = resultados.getString(2);
-                java.sql.Timestamp fechaNacimiento = resultados.getTimestamp(3);
-                String nacionalidad = resultados.getString(4);
-                int numCelular = resultados.getInt(5);
-                char sexo = resultados.getString(6).charAt(0);
-                String eps = resultados.getString(7);
-                String primerNombre = resultados.getString(8);
-                String segundoNombre = resultados.getString(9);
-                String primerApellido = resultados.getString(10);
-                String segundoApellido = resultados.getString(11);
-                int cuenta_k_cuenta = resultados.getInt(12);
-                localidad = new localidad(numIdentificacion, numCelular, cuenta_k_cuenta, tipoIdentificacion,
-                        nacionalidad,
-                        eps, primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, sexo);
-                logger.info("Se trajo el localidad con identificacion: " + numIdentificacion + ": " + localidad);
+                String ciudad_k_ciudad = resultados.getString(3);
+
+                localidad = new localidad(identificacion, tipoIdentificacion,ciudad_k_ciudad);
+                logger.info("Se trajo el localidad con identificacion: " + identificacion + ": " + localidad);
             }
         } catch (Exception e) {
             logger.info("Se presento un error al traer el localidad con identificacion: " + id + " ," + e);
