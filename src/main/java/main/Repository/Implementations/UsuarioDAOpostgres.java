@@ -145,16 +145,17 @@ public class UsuarioDAOpostgres implements IDao<Usuario> {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(insert);
             consulta.setInt(1, usuario.getIdentificacion());
-            consulta.setTimestamp(2, usuario.getFechaNacimiento());
-            consulta.setString(3, usuario.getNacionalidad());
-            consulta.setLong(4, usuario.getNumCelular());
-            consulta.setString(5, String.valueOf(usuario.getSexo()));
-            consulta.setString(6, usuario.getEps());
-            consulta.setString(7, usuario.getPrimerNombre());
-            consulta.setString(7, usuario.getSegundoNombre());
-            consulta.setString(7, usuario.getPrimerApellido());
-            consulta.setString(7, usuario.getSegundoApellido());
-            consulta.setInt(7, usuario.getCuenta_k_cuenta());
+            consulta.setString(2, usuario.getTipoIdentificacion());
+            consulta.setTimestamp(3, usuario.getFechaNacimiento());
+            consulta.setString(4, usuario.getNacionalidad());
+            consulta.setLong(5, usuario.getNumCelular());
+            consulta.setString(6, String.valueOf(usuario.getSexo()));
+            consulta.setString(7, usuario.getEps());
+            consulta.setString(8, usuario.getPrimerNombre());
+            consulta.setString(9, usuario.getSegundoNombre());
+            consulta.setString(10, usuario.getPrimerApellido());
+            consulta.setString(11, usuario.getSegundoApellido());
+            consulta.setInt(12, usuario.getCuenta_k_cuenta());
             consulta.execute();
             logger.info("Se guardo el usuario:" + usuario.toString());
         } catch (Exception e) {
