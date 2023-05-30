@@ -81,7 +81,7 @@ ON mydb.Cuenta (Plan_k_Plan);
 
 CREATE TABLE IF NOT EXISTS mydb.Usuario (
   k_NumIdentificacion INT NOT NULL,
-  n_TipoIdentificacion VARCHAR(15) NOT NULL,
+  n_TipoIdenntificacion VARCHAR(15) NOT NULL,
   f_fechaNacimiento TIMESTAMP NOT NULL,
   n_Nacionalidad VARCHAR(20) NOT NULL,
   v_NumCelular BIGINT NOT NULL,
