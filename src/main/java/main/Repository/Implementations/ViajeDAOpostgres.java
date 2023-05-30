@@ -31,8 +31,8 @@ public class ViajeDAOpostgres implements IDao<Viaje> {
             + "REFERENCES mydb.Cuenta (k_Cuenta)"
             + "ON DELETE NO ACTION"
             + "ON UPDATE NO ACTION);"
-            + "CREATE INDEX fk_Usuario_Cuenta1_idx"
-            + "ON mydb.Usuario (Cuenta_k_Cuenta);";
+            + "CREATE INDEX fk_Viaje_Cuenta1_idx"
+            + "ON mydb.Viaje (Cuenta_k_Cuenta);";
     private static final String select = "SELECT * FROM mydb.viaje;";
     private static final String select_with_id = "SELECT * FROM mydb.viaje WHERE k_viaje = ?;";
     private static final String insert = "INSERT INTO mydb.viaje VALUES(?,?,?,?,?);";
