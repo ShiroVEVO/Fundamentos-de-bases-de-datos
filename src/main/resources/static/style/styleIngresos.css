@@ -1,0 +1,45 @@
+body{
+    background-image: url('../img/patternpad.svg');
+}
+
+.sectionIngreso{
+    display: flex;
+    flex-wrap:wrap;
+    width: 400px;
+    background-color: white;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    position: relative;
+    left: 37%;
+    margin-top: 280px;
+    box-shadow: 0.3em 0.3em 0.7em rgba(0,0,0,0.2);
+}
+
+#regresar{
+    margin-left:132px;
+    margin-top:10px;
+}
+
+.sectionIngreso button{
+    margin-top: 5px;
+    position: relative;
+    left: 135px;
+}
+
+.sectionIngreso h2{
+    text-align: center;
+}
+
+.sectionIngreso input{
+    margin-bottom: 10px;
+}
+
+#sectReg{
+    margin-top: 150px;
+}
+
+#registro{
+    margin-left: -10px;
+}

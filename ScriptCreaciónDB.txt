@@ -185,13 +185,15 @@ INSERT INTO mydb.Plan VALUES (3,999,999,31990,30,60,4,0,0,75,'Mensual');
 INSERT INTO mydb.Plan VALUES (4,999,999,229900,364,60,4,0,0,75,'Anual');
 
 -- INSERSIÓN CUENTA
+INSERT INTO mydb.cuenta VALUES (1,0,0,'Activa','pass','email@email.com',1);
+INSERT INTO mydb.cuenta VALUES (2,0,0,'Activa','pass2','email2@email.com',1);
+INSERT INTO mydb.cuenta VALUES (3,0,0,'Activa','pass3','email3@email.com',1);
+INSERT INTO mydb.cuenta VALUES (4,0,0,'Activa','pass4','email4@email.com',1);
+INSERT INTO mydb.cuenta VALUES (5,100,100,'Activa', 'contraseña123', 'adrianstratos@gmail.com', 2);
 
--- Primero se crea la cuenta luego el usuario
-
--- INSERSIÓN USUARIO
-ALTER TABLE mydb.usuario ALTER COLUMN v_numcelular TYPE BIGINT;
-INSERT INTO mydb.usuario VALUES(1010043148,'CC','2023-05-23 12:34:56','Colombiano', 3125544942,'M','Famisanar','Adrian','Stiven','Olmos','Ardila',1);
-INSERT INTO mydb.usuario VALUES(1923810412,'CC','2023-05-23 12:34:56','Venezolano', 2147483647,'F','Famisanar','Adriana','Maria','Gutierrez','Paez',2);
-INSERT INTO mydb.usuario VALUES(2314689031,'CC','2023-05-23 12:34:56','Colombiano', 3113494567,'F','Famisanar','Adrian','Stiven','Olmos','Ardila',1);
-INSERT INTO mydb.usuario VALUES(1010283192,'CC','2023-05-23 12:34:56','Venezolano', 3211231689,'M','Famisanar','Adrian','Stiven','Olmos','Ardila',1);
-INSERT INTO mydb.usuario VALUES(5679192311,'CC','2023-05-23 12:34:56','Colombiano', 3230101848,'F','Famisanar','Adrian','Stiven','Olmos','Ardila',1);
+-- INSERSIÓN USUARIO 
+INSERT INTO mydb.usuario VALUES(1010043148,'CC','2023-05-23 12:34:56','Colombiano', 3125544942,'M','Famisanar','Adrian','Stiven','Olmos','Ardila',5);
+INSERT INTO mydb.usuario VALUES(1923810412,'CC','2023-05-23 12:34:56','Venezolano', 2147483647,'F','Servisalud','Adriana','Maria','Gutierrez','Paez',1);
+INSERT INTO mydb.usuario VALUES(1314689031,'CC','2023-05-23 12:34:56','Colombiano', 3113494567,'M','Sura','Juan','Manuel','Ortega','Sanchez',2);
+INSERT INTO mydb.usuario VALUES(1010283192,'CC','2023-05-23 12:34:56','Venezolano', 3211231689,'M','Saludcop','Santiago','Alberto','Villanueva','Lugo',3);
+INSERT INTO mydb.usuario VALUES(1679192311,'CC','2023-05-23 12:34:56','Colombiano', 3230101848,'M','Compensar','Esteban','Camilo','Paez','Mayorga',4);

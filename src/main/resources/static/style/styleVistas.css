@@ -1,0 +1,43 @@
+body{
+    background-image: url('../img/backgroundImage.png');
+}
+
+header{
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 40px;
+    padding-top: 20px;;
+}
+
+header a{
+    margin-left: 35px;
+}
+
+header label{
+    margin-top: 7px;
+    margin-left: 6px;
+}
+
+#userIcon{
+    width: 35px;
+    height: 35px;
+    top:3px
+}
+.tituloAgregar{
+    display:flex;
+}
+
+.tituloAgregar a{
+    margin-left: 30px;
+}
+
+.vistaDeGestion{
+    margin-top: 45px;
+    position: relative;
+    padding: 30px;
+    left: 10%;
+    background-color: white;
+    width: 80%;
+    border-radius: 15px;
+    box-shadow: 0.2em 0.2em 0.6em rgba(0,0,0,0.2);
+}
