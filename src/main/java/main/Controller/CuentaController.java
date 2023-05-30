@@ -47,7 +47,7 @@ public class CuentaController {
     public ResponseEntity guardarCuenta(@RequestBody Cuenta cuenta) throws SQLException {
         ResponseEntity response;
         if (cuentaService.listarCuenta(cuenta.getK_cuenta()) != null) {
-            response = new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            response = new ResponseEntity(HttpStatus.I_AM_A_TEAPOT);
         } else {
             response = new ResponseEntity(cuentaService.guardarCuenta(cuenta), HttpStatus.OK);
         }

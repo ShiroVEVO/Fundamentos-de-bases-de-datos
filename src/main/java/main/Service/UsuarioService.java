@@ -12,9 +12,9 @@ import main.Repository.Implementations.UsuarioDAOpostgres;
 
 @Service
 public class UsuarioService {
-    @Autowired
     private IDao DaoParticular;
 
+    @Autowired
     public UsuarioService(IDao DAOpart) {
         this.DaoParticular = new UsuarioDAOpostgres();
     }

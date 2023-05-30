@@ -12,9 +12,9 @@ import main.Repository.Implementations.CuentaDAOpostgres;
 
 @Service
 public class CuentaService {
-    @Autowired
     private IDao DaoParticular;
 
+    @Autowired
     public CuentaService(IDao DAOpart) {
         this.DaoParticular = new CuentaDAOpostgres();
     }

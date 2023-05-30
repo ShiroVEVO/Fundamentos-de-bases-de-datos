@@ -9,7 +9,7 @@
         <script src="../js/deleteAdministracion.js"></script>
         <script src="../js/getAdministracion.js"></script>
         <script src="../js/updateAdministracion.js"></script>
-        <title>Administración - Sistema de Gestión Odontologica</title>
+        <title>Administración - Sistema de bicicletas</title>
     </head>
     <body>
         <header>
@@ -22,7 +22,7 @@
             <div id="cuentas">
                 <div class ="tituloAgregar">
                     <h3>Cuentas</h3>
-                    <a href="agregarOdontologo.html" class="btn btn-primary">➕</a>
+                    <a href="agregarCuenta.html" class="btn btn-primary">➕</a>
                 </div>
 
                 <div class="row col-md-12 table-responsive">
@@ -68,7 +68,7 @@
             <div id="usuarios">
                 <div class ="tituloAgregar">
                     <h3>Usuarios</h3>
-                    <a href="agregarPaciente.html" class="btn btn-primary">➕</a>
+                    <a href="agregarUsuario.html" class="btn btn-primary">➕</a>
                 </div>
 
                 <div class="row col-md-12 table-responsive">
@@ -76,12 +76,15 @@
                         <thead>
                             <tr>
                                 <th>DNI</th>
-                                <th>User</th>
-                                <th>Password</th>
+                                <th>ID Cuenta</th>
+                                <th># Celular</th>
+                                <th>Tipo DNI</th>
+                                <th>Nacionalidad</th>
+                                <th>EPS</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
-                                <th>Domicilio</th>
-                                <th>Fecha de Alta</th>
+                                <th>Fecha de nacimiento</th>
+                                <th>Sexo</th>
                             </tr>
                         </thead>
                         <tbody id="BodyTablaUsuarios"></tbody>
@@ -91,21 +94,89 @@
                 <div class="row">
                     <div class="col-sm-6" style="display: none; background-color:#e6fffa; padding:10px; border-radius:3px" id="divUsuarioUpdate">
                         <form id="updateUsuarioForm">
-                            <label >DNI:</label>
+                            <label>DNI:</label>
                             <input type="text" class="form-control" id="DNIUpdate" value="" autocomplete="off" required readonly>
-                            <label >User:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese el nuevo usuario" id="userUsuarioUpdate" autocomplete="off" required>
-                            <label >Password:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese la nueva contraseña" id="passwordUsuarioUpdate" autocomplete="off" required>
-                            <label >Nombre:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese el nuevo nombre" id="nombreUsuarioUpdate" autocomplete="off" required>
-                            <label >Apellido:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese el nuevo apellido" id="apellidoUsuarioUpdate" autocomplete="off" required>
-                            <label >Domicilio:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese el nuevo apellido" id="domicilioUsuarioUpdate" autocomplete="off" required>
-                            <label >Fecha de Alta:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese el nuevo apellido" id="fechaAltaUsuarioUpdate" autocomplete="off" required>
+                            <label>ID Cuenta:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el ID de la cuenta" id="userUsuarioUpdate" autocomplete="off" required>
+                            <label>Numero de celular:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo numero de celular" id="celularUsuarioUpdate" autocomplete="off" required>
+                            <label>Tipo de Identificacion:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo tipo de Identificacion" id="tipoIdentificacionUsuarioUpdate" autocomplete="off" required>
+                            <label>Nacionalidad:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese la nuevo nacionalidad" id="nacionalidadUsuarioUpdate" autocomplete="off" required>
+                            <label>EPS:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese la nueva EPS" id="epsUsuarioUpdate" autocomplete="off" required>
+                            <label>Primer nombre:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el primer nombre" id="primerNombreUsuarioUpdate" autocomplete="off" required>
+                            <label>Segundo nombre:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el segundo nombre" id="segundoNombreUsuarioUpdate" autocomplete="off" required>
+                            <label>Primer Apellido:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el primer apellido" id="primerApellidoUsuarioUpdate" autocomplete="off" required>
+                            <label>Segundo Apellido:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el segundo apellido" id="segundoApellidoUsuarioUpdate" autocomplete="off" required>
+                            <label>Fecha Nacimiento:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese la fecha de nacimiento" id="fechaNacimientoUsuarioUpdate" autocomplete="off" required>
+                            <label>Sexo:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el sexo M/F" id="sexoUsuarioUpdate" autocomplete="off" required>
                             <input type="submit" class="btn btn-primary" id="btnUsuarioUpdate">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="planes">
+                <div class ="tituloAgregar">
+                    <h3>Planes</h3>
+                    <a href="agregarPlan.html" class="btn btn-primary">➕</a>
+                </div>
+
+                <div class="row col-md-12 table-responsive">
+                    <table id="tablaPlanes" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID Plan</th>
+                                <th>Valor retiro bici Mecanica</th>
+                                <th>Valor retiro bici Electrica</th>
+                                <th>Tarifa suscripcion</th>
+                                <th>Tiempo suscripcion</th>
+                                <th>Duracion maxima viaje</th>
+                                <th>Cantidad maxima viajes</th>
+                                <th>Viajes extra</th>
+                                <th>Valor viajes extra</th>
+                                <th>Valor min adicional</th>
+                                <th>Nombre</th>
+                            </tr>
+                        </thead>
+                        <tbody id="BodyTablaPlanes"></tbody>
+                    </table>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6" style="display: none; background-color:#e6fffa; padding:10px; border-radius:3px" id="divPlanUpdate">
+                        <form id="updatePlanForm">
+                            <label >ID Plan: </label>
+                            <input type="text" class="form-control" id="k_planUpdate" value="" autocomplete="off" required readonly>
+                            <label >Valor retiro bici Mecanica: </label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo valor de retiro de bici mecanica" id="valorRetiroMecanicaUpdate" autocomplete="off" required>
+                            <label >Valor retiro bici Electrica:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo valor de retiro de bici electrica" id="valorRetiroElectricaUpdate" autocomplete="off" required>
+                            <label >Tarifa suscripcion:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese la nueva tarifa de suscripcion" id="tarifaSuscripcionUpdate" autocomplete="off" required>
+                            <label >Tiempo suscripcion:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo tiempo de suscripcion" id="TiempoSuscripcionUpdate" autocomplete="off" required>
+                            <label >Duracion maxima viaje:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese la nueva duracion maxima del viaje" id="duracionMaximaViajeUpdate" autocomplete="off" required>
+                            <label >Cantidad maxima viajes:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese la nueva cantidad maxima de viajes" id="cantidadMaximaViajesUpdate" autocomplete="off" required>
+                            <label >Viajes extra:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo numero de viajes extra" id="viajesExtraUpdate" autocomplete="off" required>
+                            <label >Valor viajes extra:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo valor de viajes extra" id="valorViajeExtraUpdate" autocomplete="off" required>
+                            <label >Valor min adicional:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo valor de minuto adicional" id="valorMinAdicionaUpdate" autocomplete="off" required>
+                            <label >Nombre:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo nombre" id="nombreUpdate" autocomplete="off" required>
+                            <input type="submit" class="btn btn-primary" id="btnUpdate">
                         </form>
                     </div>
                 </div>

@@ -79,7 +79,7 @@ public class UsuarioDAOpostgres implements IDao<Usuario> {
                 String tipoIdentificacion = resultados.getString(2);
                 java.sql.Timestamp fechaNacimiento = resultados.getTimestamp(3);
                 String nacionalidad = resultados.getString(4);
-                int numCelular = resultados.getInt(5);
+                Long numCelular = resultados.getLong(5);
                 char sexo = resultados.getString(6).charAt(0);
                 String eps = resultados.getString(7);
                 String primerNombre = resultados.getString(8);
@@ -117,7 +117,7 @@ public class UsuarioDAOpostgres implements IDao<Usuario> {
                 String tipoIdentificacion = resultados.getString(2);
                 java.sql.Timestamp fechaNacimiento = resultados.getTimestamp(3);
                 String nacionalidad = resultados.getString(4);
-                int numCelular = resultados.getInt(5);
+                Long numCelular = resultados.getLong(5);
                 char sexo = resultados.getString(6).charAt(0);
                 String eps = resultados.getString(7);
                 String primerNombre = resultados.getString(8);

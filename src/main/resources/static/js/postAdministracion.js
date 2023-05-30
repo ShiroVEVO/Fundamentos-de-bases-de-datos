@@ -5,33 +5,39 @@ window.onload = function(){
     btnGuardar.addEventListener("click",function(e){
         e.preventDefault();
         let form = document.querySelector(".sectionIngreso form");
+        console.log(form);
         let organizador = [];
-        form[0].checked ? organizador.push(form[0].value) : organizador.push(form[1].value);
-        for(let i = 2; i< form.length-1; i++){
+        for(let i = 0; i < form.length-1; i++){
             organizador.push(form[i].value);
         }
-        if(form[2].id == "matricula"){
+        
+        if(form[0].id == "IDCuenta"){
             data = {
-                ROLE: organizador[0],
-                user: organizador[2],
-                password: organizador[3],
-                nombre: organizador[4],
-                apellido: organizador[5],
-                matricula: organizador[1]
+                k_cuenta: organizador[0],
+                plan_k_plan: organizador[1],
+                saldoFinal: organizador[2],
+                saldoInicial: organizador[3],
+                estado: organizador[4],
+                contraseña: organizador[5],
+                correoElectronico: organizador[6]
             }
-            url = '/odontologo/guardar';
+            url = '/cuenta/guardar';
         }else{
             data = {
-                ROLE: organizador[0],
-                user: organizador[2],
-                password: organizador[3],
-                nombre: organizador[4],
-                apellido: organizador[5],
-                DNI: organizador[1],
-                domicilio: organizador[6],
-                fechaAlta: organizador[7]
+                identificacion: organizador[0],
+                cuenta_k_cuenta: organizador[1],
+                numCelular: organizador[2],
+                tipoIdentificacion: organizador[3],
+                nacionalidad: organizador[4],
+                eps: organizador[5],
+                primerNombre: organizador[6],
+                segundoNombre: organizador[7],
+                primerApellido: organizador[8],
+                segundoApellido: organizador[9],
+                fechaNacimiento: obtenerTimestamp(organizador[10]),
+                sexo: organizador[11],
             }
-            url = '/paciente/guardar';
+            url = '/usuario/guardar';
         }
         let settings = {
             method:'POST',
@@ -50,4 +56,11 @@ window.onload = function(){
         })
     })
 }
+
+function obtenerTimestamp() {
+    var fechaInput = document.getElementById("fecha").value;
+    var fecha = new Date(fechaInput);
+    var timestamp = fecha.getTime() / 1000; // Convertir a segundos dividido por 1000
+    console.log(timestamp);
+  }
 
