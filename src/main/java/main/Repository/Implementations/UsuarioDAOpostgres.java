@@ -90,7 +90,7 @@ public class UsuarioDAOpostgres implements IDao<Usuario> {
                 Usuario usuario = new Usuario(numIdentificacion, numCelular, cuenta_k_cuenta, tipoIdentificacion,
                         nacionalidad, eps, primerNombre, segundoNombre, primerApellido, segundoApellido,
                         fechaNacimiento, sexo);
-                logger.info("Se trajo un usuario: " + usuario);
+                // logger.info("Se trajo un usuario: " + usuario);
                 ListaUsuarios.add(usuario);
             }
         } catch (Exception e) {

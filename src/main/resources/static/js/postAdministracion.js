@@ -21,8 +21,22 @@
                 correoElectronico: organizador[6]
             }
             url = '/cuenta/guardar';
-        }else if(form[0].id == "IDPlan"){
 
+        }else if(form[0].id == "IDPlan"){
+            data = {
+                k_plan: organizador[0],
+                tiempoSuscripcion: organizador[1],
+                duracionMaxViaje: organizador[2],
+                cantidadMaxViajes: organizador[3],
+                viajesExtra: organizador[4],
+                valorRetiroMecanica: organizador[5],
+                valorRetiroElectrica: organizador[6],
+                tarifaSuscripcion: organizador[7],
+                valorViajeExtra: organizador[8],
+                valorMinAdicional: organizador[9],
+                nombre: organizador[10],
+            }
+            url = '/plan/guardar';
         }else{
             data = {
                 identificacion: organizador[0],

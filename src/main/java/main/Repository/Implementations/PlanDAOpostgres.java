@@ -83,7 +83,7 @@ public class PlanDAOpostgres implements IDao<Plan> {
                 Plan plan = new Plan(k_plan, tiempoSuscripcion, duracionMaxViaje, cantidadMaxViajes, viajesExtra,
                         valorRetiroMecanica, valorRetiroElectrica, tarifaSuscripcion, valorViajeExtra,
                         valorMinAdicional, nombre);
-                logger.info("Se trajo un plan: " + plan);
+                // logger.info("Se trajo un plan: " + plan);
                 ListaPlanes.add(plan);
             }
         } catch (Exception e) {
@@ -121,7 +121,7 @@ public class PlanDAOpostgres implements IDao<Plan> {
                 plan = new Plan(k_plan, tiempoSuscripcion, duracionMaxViaje, cantidadMaxViajes, viajesExtra,
                         valorRetiroMecanica, valorRetiroElectrica, tarifaSuscripcion, valorViajeExtra,
                         valorMinAdicional, nombre);
-                logger.info("Se trajo el plan con id: " + id + ": " + plan);
+                // logger.info("Se trajo el plan con id: " + id + ": " + plan);
             }
         } catch (Exception e) {
             logger.info("Se presento un error al traer el plan con id: " + id + " ," + e);

@@ -1,7 +1,7 @@
 function actualizarCuenta(idCuenta){
     let registro = document.querySelector("#registroCuentaKey" + idCuenta);
     let divFormulario = document.querySelector("#divCuentaUpdate");
-    let btnUpdate = document.querySelector("#btnUpdate");
+    let btnUpdate = document.querySelector("#btnCuentaUpdate");
     let organizador = [];
     for(let i = 0; i < registro.cells.length - 2; i++){
         divFormulario.childNodes[1][i].value = registro.cells[i].textContent;
@@ -55,7 +55,7 @@ function actualizarCuenta(idCuenta){
             let ocultable = document.querySelector("#divCuentaUpdate");
             ocultable.style.display = "none";
         })
-        location.reload();
+        //location.reload();
     })
 }
 
@@ -195,6 +195,6 @@ function actualizarPlan(idPlan){
             let ocultable = document.querySelector("#divPlanUpdate");
             ocultable.style.display = "none";
         })
-        location.reload();
+        //location.reload();
     })
 }
