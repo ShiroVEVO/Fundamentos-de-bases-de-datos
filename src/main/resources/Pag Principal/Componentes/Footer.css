@@ -1,0 +1,42 @@
+footer {
+    background:#06a00d;
+    padding: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footer-left, .footer-middle, .footer-right {
+    color: white;
+  }
+  
+  .footer-left {
+    flex: 1;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .footer-middle {
+    flex: 2;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  
+  .author-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+  
+  .author-list li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-right {
+    flex: 1;
+    text-align: right;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px;
+  }

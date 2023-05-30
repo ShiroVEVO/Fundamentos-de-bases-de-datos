@@ -1,0 +1,93 @@
+.App {
+  text-align: center;
+  
+}
+
+.container {
+  background-color: white;
+  color: black;
+  background: linear-gradient(to bottom right, #1db842, #6ff975);
+}
+
+.info {
+  padding: 20px;
+}
+
+
+.Planes{
+  display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+      
+      padding: 10px;
+}
+
+.itemPlan{
+  background-color: #f3f3f3;
+      padding: 20px;
+      text-align: center;
+      border-radius: 55px; 
+      box-shadow: 1px 5px 5px black;
+}
+
+
+.dos-columnas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titulo-confi {
+  flex: 1;
+  
+  background-color: #eaeaea;
+  display: flex;
+  justify-content: center;
+  border-radius: 55px; 
+  box-shadow: 1px 5px 5px black;
+}
+
+.descrip-confi {
+  flex: 1;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 40px; 
+  box-shadow: 1px 5px 5px black;
+}
+
+.titulo {
+  font-size: 24px;
+  
+}
+
+.descripcion {
+  font-size: 16px;
+}
+
+.Planes2{
+  display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+      
+      padding: 10px;
+}
+
+.itemPlan2{
+  background-color: #f3f3f3;
+      padding: 20px;
+      text-align: center;
+      border-radius: 55px; 
+      box-shadow: 1px 5px 5px black;
+}
+
+.boton {
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.boton:hover {
+  background-color: #4CAF50;
+  color: white;
+}
