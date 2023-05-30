@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0389449f-7f0c-4537-8da6-765bb83af7cc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/Model/Bicicleta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/Model/Estacion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/Model/FormaPago.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/Model/Localidad.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/Model/Viaje.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/Repository/Implementations/LocalidadDAOpostgres.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/Repository/Implementations/UsuarioDAOpostgres.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Repository/Implementations/UsuarioDAOpostgres.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/Service/CuentaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Service/CuentaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/Service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/html/vistaAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/html/vistaAdmin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/getAdministracion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/getAdministracion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/Repository/Implementations/LocalidadDAOpostgres.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/Repository/Implementations/UsuarioDAOpostgres.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Repository/Implementations/UsuarioDAOpostgres.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/Service/CuentaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Service/CuentaService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/Service/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Service/UsuarioService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/html/vistaAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/html/vistaAdmin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/getAdministracion.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/getAdministracion.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2QCxNkGKVB2TguBpLaKF083QOp5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0389449f-7f0c-4537-8da6-765bb83af7cc" name="Changes" comment="" />
+      <created>1684871331011</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684871331011</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
