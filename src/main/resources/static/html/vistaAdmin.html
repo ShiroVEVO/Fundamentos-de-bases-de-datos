@@ -19,54 +19,60 @@
         </header>
 
         <section class = "vistaDeGestion">
-            <div id="odontologos">
+            <div id="cuentas">
                 <div class ="tituloAgregar">
-                    <h3>Odontologos</h3>
+                    <h3>Cuentas</h3>
                     <a href="agregarOdontologo.html" class="btn btn-primary">➕</a>
                 </div>
 
                 <div class="row col-md-12 table-responsive">
-                    <table id="tablaOdontologos" class="table table-striped">
+                    <table id="tablaCuentas" class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Matricula profesional</th>
-                                <th>User</th>
-                                <th>Password</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
+                                <th>ID Cuenta</th>
+                                <th>ID Plan</th>
+                                <th>Saldo final</th>
+                                <th>Saldo inicial</th>
+                                <th>Estado</th>
+                                <th>Contraseña</th>
+                                <th>Correo Electronico</th>
                             </tr>
                         </thead>
-                        <tbody id="BodyTablaOdontologos"></tbody>
+                        <tbody id="BodyTablaCuentas"></tbody>
                     </table>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-6" style="display: none; background-color:#e6fffa; padding:10px; border-radius:3px" id="divOdontologoUpdate">
-                        <form id="updateOdontologoForm">
-                            <label >Matricula Profesional:</label>
-                            <input type="text" class="form-control" id="matriculaUpdate" value="" autocomplete="off" required readonly>
-                            <label >User:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese el nuevo usuario" id="userUpdate" autocomplete="off" required>
-                            <label >Password:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese la nueva contraseña" id="passwordUpdate" autocomplete="off" required>
-                            <label >Nombre:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese el nuevo nombre" id="nombreUpdate" autocomplete="off" required>
-                            <label >Apellido:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese el nuevo apellido" id="apellidoUpdate" autocomplete="off" required>
+                    <div class="col-sm-6" style="display: none; background-color:#e6fffa; padding:10px; border-radius:3px" id="divCuentaUpdate">
+                        <form id="updateCuentaForm">
+                            <label >ID Cuenta: </label>
+                            <input type="text" class="form-control" id="k_cuentaUpdate" value="" autocomplete="off" required readonly>
+                            <label >ID Plan: </label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo plan" id="plan_k_planUpdate" autocomplete="off" required>
+                            <label >Saldo Final:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo saldo final" id="saldoFinalUpdate" autocomplete="off" required>
+                            <label >Saldo Inicial:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo saldo inicial" id="saldoInicialUpdate" autocomplete="off" required>
+                            <label >Estado:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo estado" id="estadoUpdate" autocomplete="off" required>
+                            <label >Contraseña:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese la nueva contraseña" id="contraseñaUpdate" autocomplete="off" required>
+                            <label >Correo:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo correo" id="correoUpdate" autocomplete="off" required>
                             <input type="submit" class="btn btn-primary" id="btnUpdate">
                         </form>
                     </div>
                 </div>
             </div>
 
-            <div id="pacientes">
+            <div id="usuarios">
                 <div class ="tituloAgregar">
-                    <h3>Pacientes</h3>
+                    <h3>Usuarios</h3>
                     <a href="agregarPaciente.html" class="btn btn-primary">➕</a>
                 </div>
 
                 <div class="row col-md-12 table-responsive">
-                    <table id="tablaPacientes" class="table table-striped">
+                    <table id="tablaUsuarios" class="table table-striped">
                         <thead>
                             <tr>
                                 <th>DNI</th>
@@ -78,28 +84,28 @@
                                 <th>Fecha de Alta</th>
                             </tr>
                         </thead>
-                        <tbody id="BodyTablaPacientes"></tbody>
+                        <tbody id="BodyTablaUsuarios"></tbody>
                     </table>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-6" style="display: none; background-color:#e6fffa; padding:10px; border-radius:3px" id="divPacienteUpdate">
-                        <form id="updatePacienteForm">
+                    <div class="col-sm-6" style="display: none; background-color:#e6fffa; padding:10px; border-radius:3px" id="divUsuarioUpdate">
+                        <form id="updateUsuarioForm">
                             <label >DNI:</label>
                             <input type="text" class="form-control" id="DNIUpdate" value="" autocomplete="off" required readonly>
                             <label >User:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese el nuevo usuario" id="userPacienteUpdate" autocomplete="off" required>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo usuario" id="userUsuarioUpdate" autocomplete="off" required>
                             <label >Password:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese la nueva contraseña" id="passwordPacienteUpdate" autocomplete="off" required>
+                            <input type="text" class="form-control" placeholder="Ingrese la nueva contraseña" id="passwordUsuarioUpdate" autocomplete="off" required>
                             <label >Nombre:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese el nuevo nombre" id="nombrePacienteUpdate" autocomplete="off" required>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo nombre" id="nombreUsuarioUpdate" autocomplete="off" required>
                             <label >Apellido:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese el nuevo apellido" id="apellidoPacienteUpdate" autocomplete="off" required>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo apellido" id="apellidoUsuarioUpdate" autocomplete="off" required>
                             <label >Domicilio:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese el nuevo apellido" id="domicilioPacienteUpdate" autocomplete="off" required>
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo apellido" id="domicilioUsuarioUpdate" autocomplete="off" required>
                             <label >Fecha de Alta:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese el nuevo apellido" id="fechaAltaPacienteUpdate" autocomplete="off" required>
-                            <input type="submit" class="btn btn-primary" id="btnPacienteUpdate">
+                            <input type="text" class="form-control" placeholder="Ingrese el nuevo apellido" id="fechaAltaUsuarioUpdate" autocomplete="off" required>
+                            <input type="submit" class="btn btn-primary" id="btnUsuarioUpdate">
                         </form>
                     </div>
                 </div>
