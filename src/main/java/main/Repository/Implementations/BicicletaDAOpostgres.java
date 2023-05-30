@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class BicicletaDAOpostgres implements IDao<Bicicleta> {
     private Conexion conexion = new Conexion();
     private PreparedStatement consulta = null;
-    private static final Logger logger = Logger.getLogger(CiudadDAOpostgres.class.getName());
+    private static final Logger logger = Logger.getLogger(BicicletaDAOpostgres.class.getName());
 
     private static final String createTable = "CREATE TABLE IF NOT EXISTS mydb.Bicicleta("
             + "k_Bicicleta INT NOT NULL,"
