@@ -18,35 +18,24 @@ public class LocalidadDAOpostgres implements IDao<localidad> {
     private PreparedStatement consulta = null;
     private static final Logger logger = Logger.getLogger(LocalidadDAOpostgres.class.getName());
 
-    private static final String createTable = "CREATE TABLE IF NOT EXISTS mydb.localidad ("
-            + "k_NumIdentificacion INT NOT NULL,"
-            + "n_TipoIdentificacion VARCHAR(15) NOT NULL,"
-            + "f_fechaNacimiento TIMESTAMP NOT NULL,"
-            + "n_Nacionalidad VARCHAR(20) NOT NULL,"
-            + "v_NumCelular BIGINT NOT NULL,"
-            + "i_Sexo CHAR(1) NOT NULL,"
-            + "n_Eps VARCHAR(20) NOT NULL,"
-            + "n_PrimerNombre VARCHAR(25) NOT NULL,"
-            + "n_SegundoNombre VARCHAR(25) NULL,"
-            + "n_PrimerApellido VARCHAR(25) NOT NULL,"
-            + "n_SegundoApellido VARCHAR(25) NULL,"
-            + "Cuenta_k_Cuenta INT NOT NULL,"
-            + "PRIMARY KEY (k_NumIdentificacion),"
-            + "CONSTRAINT fk_localidad_Cuenta1"
-            + "FOREIGN KEY (Cuenta_k_Cuenta)"
-            + "REFERENCES mydb.Cuenta (k_Cuenta)"
+    private static final String createTable = "CREATE TABLE IF NOT EXISTS mydb.Localidad ("
+            + "k_Localidad INT NOT NULL"
+            + "n_Localidad VARCHAR(40) NOT NULL,"
+            + "Ciudad_k_Ciudad INT NOT NULL,"
+            + "PRIMARY KEY (k_Localidad),"
+            + "CONSTRAINT fk_Localidad_Ciudad"
+            + "FOREIGN KEY (Ciudad_k_Ciudad)"
+            + "REFERENCES mydb.Ciudad (k_Ciudad)"
             + "ON DELETE NO ACTION"
             + "ON UPDATE NO ACTION);"
-            + "CREATE INDEX fk_localidad_Cuenta1_idx"
+            + "CREATE INDEX fk_Localidad_Ciudad_idx"
             + "ON mydb.localidad (Cuenta_k_Cuenta);";
     private static final String select = "SELECT * FROM mydb.localidad;";
-    private static final String select_with_id = "SELECT * FROM mydb.localidad WHERE k_numidentificacion = ?;";
-    private static final String insert = "INSERT INTO mydb.localidad VALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
-    private static final String delete = "DELETE FROM mydb.localidad WHERE k_numidentificacion = ?;";
-    private static final String update = "UPDATE mydb.localidad SET n_tipoidentificacion = ?, f_fechanacimiento = ?,"
-            + "n_nacionalidad = ?, v_numcelular = ?, i_sexo = ?, n_eps = ?,"
-            + "n_primernombre = ?, n_segundonombre = ?, n_primerapellido = ?,"
-            + "n_segundoapellido = ?, cuenta_k_cuenta = ? WHERE k_numidentificacion = ?;";
+    private static final String select_with_id = "SELECT * FROM mydb.localidad WHERE k_Localidad = ?;";
+    private static final String insert = "INSERT INTO mydb.localidad VALUES(?,?,?);";
+    private static final String delete = "DELETE FROM mydb.localidad WHERE k_Localidad = ?;";
+    private static final String update = "UPDATE mydb.localidad SET n_Localidad = ?, n_Localidad = ?,"
+            +"WHERE k_numidentificacion = ?;";
 
     @Override
     public void CrearTabla() throws SQLException {
@@ -68,16 +57,16 @@ public class LocalidadDAOpostgres implements IDao<localidad> {
     public List<Localidad> listarTodos() throws SQLException {
         Statement consulta = null;
         ResultSet resultados = null;
-        List<localidad> Listalocalidads = new ArrayList<>();
+        List<Localidad> Listalocalidades = new ArrayList<>();
         try {
             conexion.conectar();
             consulta = conexion.conn.createStatement();
             resultados = consulta.executeQuery(select);
             while (resultados.next()) {
-                int numIdentificacion = resultados.getInt(1);
-                String tipoIdentificacion = resultados.getString(2);
-                java.sql.Timestamp fechaNacimiento = resultados.getTimestamp(3);
-                String nacionalidad = resultados.getString(4);
+                int localidad = resultados.getInt(1);
+                String nombre = resultados.getString(2);
+                //int localidad = resultados.getInt(1);
+                
                 int numCelular = resultados.getInt(5);
                 char sexo = resultados.getString(6).charAt(0);
                 String eps = resultados.getString(7);
@@ -86,11 +75,11 @@ public class LocalidadDAOpostgres implements IDao<localidad> {
                 String primerApellido = resultados.getString(10);
                 String segundoApellido = resultados.getString(11);
                 int cuenta_k_cuenta = resultados.getInt(12);
-                localidad localidad = new localidad(numIdentificacion, numCelular, cuenta_k_cuenta, tipoIdentificacion,
+                Localidad localidad = new Localidad(localidad, numCelular, cuenta_k_cuenta, nameLocalidad,
                         nacionalidad, eps, primerNombre, segundoNombre, primerApellido, segundoApellido,
                         fechaNacimiento, sexo);
                 logger.info("Se trajo un localidad: " + localidad);
-                Listalocalidads.add(localidad);
+                Listalocalidades.add(localidad);
             }
         } catch (Exception e) {
             logger.info("Se presento un error al listar localidads, " + e);
@@ -99,7 +88,7 @@ public class LocalidadDAOpostgres implements IDao<localidad> {
             consulta.close();
             conexion.desconectar();
         }
-        return Listalocalidads;
+        return Listalocalidades;
     }
 
     @Override
