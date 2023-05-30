@@ -11,7 +11,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import org.springframework.stereotype.Service;
 
 //@Service
 public class UsuarioDAOpostgres implements IDao<Usuario> {
@@ -142,17 +141,72 @@ public class UsuarioDAOpostgres implements IDao<Usuario> {
 
     @Override
     public Usuario agregar(Usuario usuario) throws SQLException {
-        return null;
+        try {
+            conexion.conectar();
+            consulta = conexion.conn.prepareStatement(insert);
+            consulta.setInt(1, usuario.getIdentificacion());
+            consulta.setTimestamp(2, usuario.getFechaNacimiento());
+            consulta.setString(3, usuario.getNacionalidad());
+            consulta.setLong(4, usuario.getNumCelular());
+            consulta.setString(5, String.valueOf(usuario.getSexo()));
+            consulta.setString(6, usuario.getEps());
+            consulta.setString(7, usuario.getPrimerNombre());
+            consulta.setString(7, usuario.getSegundoNombre());
+            consulta.setString(7, usuario.getPrimerApellido());
+            consulta.setString(7, usuario.getSegundoApellido());
+            consulta.setInt(7, usuario.getCuenta_k_cuenta());
+            consulta.execute();
+            logger.info("Se guardo el usuario:" + usuario.toString());
+        } catch (Exception e) {
+            logger.warning("No se pudo guardar el usuario, " + e);
+        } finally {
+            consulta.close();
+            conexion.desconectar();
+        }
+        return usuario;
     }
 
     @Override
     public void eliminar(int id) throws SQLException {
-
+        try {
+            conexion.conectar();
+            consulta = conexion.conn.prepareStatement(delete);
+            consulta.setInt(1, id);
+            consulta.executeUpdate();
+            logger.info("Se eliminó el usuario con ID: " + id);
+        } catch (Exception e) {
+            logger.warning("No se pudo eliminar el usuario, " + e);
+        } finally {
+            conexion.desconectar();
+        }
     }
 
     @Override
-    public Usuario actualizar(Usuario ciudad) throws SQLException {
-        return null;
+    public Usuario actualizar(Usuario usuario) throws SQLException {
+        try {
+            conexion.conectar();
+            consulta = conexion.conn.prepareStatement(update);
+            consulta.setInt(12, usuario.getIdentificacion());
+            consulta.setString(1, usuario.getTipoIdentificacion());
+            consulta.setTimestamp(2, usuario.getFechaNacimiento());
+            consulta.setString(3, usuario.getNacionalidad());
+            consulta.setLong(4, usuario.getNumCelular());
+            consulta.setString(5, String.valueOf(usuario.getSexo()));
+            consulta.setString(6, usuario.getEps());
+            consulta.setString(7, usuario.getPrimerNombre());
+            consulta.setString(8, usuario.getSegundoNombre());
+            consulta.setString(9, usuario.getPrimerApellido());
+            consulta.setString(10, usuario.getSegundoApellido());
+            consulta.setInt(11, usuario.getCuenta_k_cuenta());
+            consulta.executeUpdate();
+            logger.info("se actualizó el usuario " + usuario.getIdentificacion() + " a " + usuario.toString());
+        } catch (Exception e) {
+            logger.warning("No se pudo actualizar el usuario, " + e);
+        } finally {
+            consulta.close();
+            conexion.desconectar();
+        }
+        return usuario;
     }
 
 }

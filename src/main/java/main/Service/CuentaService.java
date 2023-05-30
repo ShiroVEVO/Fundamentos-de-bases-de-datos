@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import main.Model.Cuenta;
 import main.Repository.IDao;
+import main.Repository.Implementations.CuentaDAOpostgres;
 
 @Service
 public class CuentaService {
@@ -15,7 +16,7 @@ public class CuentaService {
     private IDao DaoParticular;
 
     public CuentaService(IDao DAOpart) {
-        this.DaoParticular = DAOpart;
+        this.DaoParticular = new CuentaDAOpostgres();
     }
 
     public void crearTabla() throws SQLException {

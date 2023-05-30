@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import main.Model.Usuario;
 import main.Repository.IDao;
+import main.Repository.Implementations.UsuarioDAOpostgres;
 
 @Service
 public class UsuarioService {
@@ -15,7 +16,7 @@ public class UsuarioService {
     private IDao DaoParticular;
 
     public UsuarioService(IDao DAOpart) {
-        this.DaoParticular = DAOpart;
+        this.DaoParticular = new UsuarioDAOpostgres();
     }
 
     public void crearTabla() throws SQLException {

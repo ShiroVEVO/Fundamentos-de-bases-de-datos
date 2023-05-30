@@ -32,7 +32,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     private static final String update = "UPDATE mydb.ciudad SET n_ciudad = ?, f_inicioservicio = ?, f_finalservicio = ? WHERE k_ciudad = ?;";
 
     @Override
-    public void CrearTabla() throws SQLException { // NO PROBADO
+    public void CrearTabla() throws SQLException {
         conexion.conectar();
         Statement consulta = null;
         try {
@@ -48,7 +48,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     }
 
     @Override
-    public List<Ciudad> listarTodos() throws SQLException { // NO PROBADO
+    public List<Ciudad> listarTodos() throws SQLException { // FUNCIONAL
         Statement consulta = null;
         ResultSet resultados = null;
         List<Ciudad> ListaCiudades = new ArrayList<>();
@@ -77,7 +77,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     }
 
     @Override
-    public Ciudad listar(int id) throws SQLException { // NO PROBADO
+    public Ciudad listar(int id) throws SQLException { // FUNCIONAL
         ResultSet resultados = null;
         Ciudad ciudad = null;
         try {
@@ -104,7 +104,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     }
 
     @Override
-    public Ciudad agregar(Ciudad ciudad) throws SQLException { // NO PROBADO
+    public Ciudad agregar(Ciudad ciudad) throws SQLException { // FUNCIONAL
         try {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(insert);
@@ -124,7 +124,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     }
 
     @Override
-    public void eliminar(int id) throws SQLException { // NO PROBADO
+    public void eliminar(int id) throws SQLException { // FUNCIONAL
         try {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(delete);
@@ -139,7 +139,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     }
 
     @Override
-    public Ciudad actualizar(Ciudad ciudad) throws SQLException { // NO PROBADO
+    public Ciudad actualizar(Ciudad ciudad) throws SQLException { // FUNCIONAL
         try {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(update);

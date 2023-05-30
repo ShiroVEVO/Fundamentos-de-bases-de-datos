@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class PlanDAOpostgres implements IDao<Plan> {
     private Conexion conexion = new Conexion();
     private PreparedStatement consulta = null;
@@ -38,7 +38,7 @@ public class PlanDAOpostgres implements IDao<Plan> {
     private static final String delete = "DELETE FROM mydb.Plan WHERE k_plan = ?;";
     private static final String update = "UPDATE mydb.plan SET i_valorretiromecanica = ?, i_valorretiroelectrica = ?,"
             + "i_tarifasuscripcion = ?, i_tiemposuscripcion = ?, i_duracionmaxviaje = ?,"
-            + "i_cantidadmaxviajes = ?, q_viajesextra = ?, i_valorviajeextra = ?, i_valorminadicional = ?, n_nombre = ?"
+            + "i_cantidadmaxviajes = ?, q_viajesextra = ?, i_valorviajeextra = ?, i_valorminadicional = ?, n_nombre = ? "
             + "WHERE k_plan = ?;";
 
     @Override
@@ -176,7 +176,7 @@ public class PlanDAOpostgres implements IDao<Plan> {
     }
 
     @Override
-    public Plan actualizar(Plan plan) throws SQLException { // NO FUNCIONAL POR AHORA
+    public Plan actualizar(Plan plan) throws SQLException { // FUNCIONAL
         try {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(update);
@@ -192,6 +192,7 @@ public class PlanDAOpostgres implements IDao<Plan> {
             consulta.setDouble(9, plan.getValorMinAdicional());
             consulta.setString(10, plan.getNombre());
             consulta.setInt(11, plan.getK_plan());
+            consulta.executeUpdate();
             logger.info("se actualizó el plan " + plan.getK_plan() + " a " + plan.toString());
         } catch (Exception e) {
             logger.warning("No se pudo actualizar el plan, " + e);
