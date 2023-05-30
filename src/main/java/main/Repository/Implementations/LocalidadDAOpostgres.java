@@ -106,7 +106,7 @@ public class LocalidadDAOpostgres implements IDao<localidad> {
         }
         return localidad;
     }
-
+    //Terminar desde aqui 
     @Override
     public localidad agregar(localidad localidad) throws SQLException {
         try {
@@ -115,14 +115,7 @@ public class LocalidadDAOpostgres implements IDao<localidad> {
             consulta.setInt(1, localidad.getIdentificacion());
             consulta.setTimestamp(2, localidad.getFechaNacimiento());
             consulta.setString(3, localidad.getNacionalidad());
-            consulta.setLong(4, localidad.getNumCelular());
-            consulta.setString(5, String.valueOf(localidad.getSexo()));
-            consulta.setString(6, localidad.getEps());
-            consulta.setString(7, localidad.getPrimerNombre());
-            consulta.setString(7, localidad.getSegundoNombre());
-            consulta.setString(7, localidad.getPrimerApellido());
-            consulta.setString(7, localidad.getSegundoApellido());
-            consulta.setInt(7, localidad.getCuenta_k_cuenta());
+
             consulta.execute();
             logger.info("Se guardo el localidad:" + localidad.toString());
         } catch (Exception e) {
