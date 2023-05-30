@@ -31,11 +31,11 @@ public class LocalidadDAOpostgres implements IDao<localidad> {
             + "CREATE INDEX fk_Localidad_Ciudad_idx"
             + "ON mydb.localidad (Cuenta_k_Cuenta);";
     private static final String select = "SELECT * FROM mydb.localidad;";
-    private static final String select_with_id = "SELECT * FROM mydb.localidad WHERE k_Localidad = ?;";
+    private static final String select_with_id = "SELECT * FROM mydb.localidad WHERE k_localidad = ?;";
     private static final String insert = "INSERT INTO mydb.localidad VALUES(?,?,?);";
-    private static final String delete = "DELETE FROM mydb.localidad WHERE k_Localidad = ?;";
-    private static final String update = "UPDATE mydb.localidad SET n_Localidad = ?, n_Localidad = ?,"
-            +"WHERE k_numidentificacion = ?;";
+    private static final String delete = "DELETE FROM mydb.localidad WHERE k_localidad = ?;";
+    private static final String update = "UPDATE mydb.localidad SET n_localidad = ?, ciudad_k_ciudad = ?,"
+            +"WHERE k_localidad = ?;";
 
     @Override
     public void CrearTabla() throws SQLException {
