@@ -1,6 +1,6 @@
 package main.Repository.Implementations;
 
-import main.Model.Ciudad;
+import main.Model.Bicicleta;
 import main.Repository.IDao;
 import main.Repository.Configuration.Conexion;
 
@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import org.springframework.stereotype.Service;
 
 //@Service
-public class CiudadDAOpostgres implements IDao<Ciudad> {
+public class CiudadDAOpostgres implements IDao<Bicicleta> {
     private Conexion conexion = new Conexion();
     private PreparedStatement consulta = null;
     private static final Logger logger = Logger.getLogger(CiudadDAOpostgres.class.getName());
@@ -48,10 +48,10 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     }
 
     @Override
-    public List<Ciudad> listarTodos() throws SQLException { // FUNCIONAL
+    public List<Bicicleta> listarTodos() throws SQLException { // FUNCIONAL
         Statement consulta = null;
         ResultSet resultados = null;
-        List<Ciudad> ListaCiudades = new ArrayList<>();
+        List<Bicicleta> ListaCiudades = new ArrayList<>();
         try {
             conexion.conectar();
             consulta = conexion.conn.createStatement();
@@ -62,7 +62,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
                 String Nombre = resultados.getString(2);
                 java.sql.Timestamp InicioServicio = resultados.getTimestamp(3);
                 java.sql.Timestamp FinServicio = resultados.getTimestamp(4);
-                Ciudad ciudad = new Ciudad(IDCiudad, Nombre, InicioServicio, FinServicio);
+                Bicicleta ciudad = new Bicicleta(IDCiudad, Nombre, InicioServicio, FinServicio);
                 logger.info("Se trajo una ciudad: " + ciudad);
                 ListaCiudades.add(ciudad);
             }
@@ -77,9 +77,9 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     }
 
     @Override
-    public Ciudad listar(int id) throws SQLException { // FUNCIONAL
+    public Bicicleta listar(int id) throws SQLException { // FUNCIONAL
         ResultSet resultados = null;
-        Ciudad ciudad = null;
+        Bicicleta ciudad = null;
         try {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(select_with_id);
@@ -90,7 +90,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
                 String Nombre = resultados.getString(2);
                 java.sql.Timestamp inicioServicio = resultados.getTimestamp(3);
                 java.sql.Timestamp finalServicio = resultados.getTimestamp(4);
-                ciudad = new Ciudad(IDCiudad, Nombre, inicioServicio, finalServicio);
+                ciudad = new Bicicleta(IDCiudad, Nombre, inicioServicio, finalServicio);
                 logger.info("Se trajo la ciudad con id: " + IDCiudad + ": " + ciudad);
             }
         } catch (Exception e) {
@@ -104,7 +104,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     }
 
     @Override
-    public Ciudad agregar(Ciudad ciudad) throws SQLException { // FUNCIONAL
+    public Bicicleta agregar(Bicicleta ciudad) throws SQLException { // FUNCIONAL
         try {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(insert);
@@ -139,7 +139,7 @@ public class CiudadDAOpostgres implements IDao<Ciudad> {
     }
 
     @Override
-    public Ciudad actualizar(Ciudad ciudad) throws SQLException { // FUNCIONAL
+    public Bicicleta actualizar(Bicicleta ciudad) throws SQLException { // FUNCIONAL
         try {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(update);
