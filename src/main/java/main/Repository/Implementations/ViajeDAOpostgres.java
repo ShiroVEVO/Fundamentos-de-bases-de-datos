@@ -130,7 +130,7 @@ public class ViajeDAOpostgres implements IDao<Viaje> {
             consulta.execute();
             logger.info("Se guardo el viaje:" + viaje.toString());
         } catch (Exception e) {
-            logger.warning("No se pudo guardar la ciudad, " + e);
+            logger.warning("No se pudo guardar el viaje, " + e);
         } finally {
             consulta.close();
             conexion.desconectar();
