@@ -29,13 +29,13 @@ public class LocalidadDAOpostgres implements IDao<Localidad> {
             + "ON DELETE NO ACTION"
             + "ON UPDATE NO ACTION);"
             + "CREATE INDEX fk_Localidad_Ciudad_idx"
-            + "ON mydb.Localidad (Cuenta_k_Cuenta);";
-    private static final String select = "SELECT * FROM mydb.Localidad;";
-    private static final String select_with_id = "SELECT * FROM mydb.Localidad WHERE k_localidad = ?;";
-    private static final String insert = "INSERT INTO mydb.Localidad VALUES(?,?,?);";
-    private static final String delete = "DELETE FROM mydb.Localidad WHERE k_localidad = ?;";
-    private static final String update = "UPDATE mydb.Localidad SET n_localidad = ?, ciudad_k_ciudad = ?,"
-            + "WHERE k_localidad = ?;";
+            + "ON mydb.localidad (Cuenta_k_Cuenta);";
+    private static final String select = "SELECT * FROM mydb.localidad;";
+    private static final String select_with_id = "SELECT * FROM mydb.localidad WHERE k_localidad = ?;";
+    private static final String insert = "INSERT INTO mydb.localidad VALUES(?,?,?);";
+    private static final String delete = "DELETE FROM mydb.localidad WHERE k_localidad = ?;";
+    private static final String update = "UPDATE mydb.localidad SET n_localidad = ?, ciudad_k_ciudad = ?,"
+            +"WHERE k_localidad = ?;";
 
     @Override
     public void CrearTabla() throws SQLException {
@@ -55,19 +55,76 @@ public class LocalidadDAOpostgres implements IDao<Localidad> {
 
     @Override
     public List<Localidad> listarTodos() throws SQLException {
-        return null;
+        Statement consulta = null;
+        ResultSet resultados = null;
+        List<Localidad> Listalocalidades = new ArrayList<>();
+        try {
+            conexion.conectar();
+            consulta = conexion.conn.createStatement();
+            resultados = consulta.executeQuery(select);
+            while (resultados.next()) {
+                int k_localidad = resultados.getInt(1);
+                int ciudad_k_ciudad = resultados.getInt(2);
+                String n_localidad = resultados.getString(3);
+                Localidad localidad = new Localidad(k_localidad, ciudad_k_ciudad, n_localidad);
+                logger.info("Se trajo una localidad: " + localidad);
+                Listalocalidades.add(localidad);
+            }
+        } catch (Exception e) {
+            logger.info("Se presento un error al listar localidads, " + e);
+        } finally {
+            resultados.close();
+            consulta.close();
+            conexion.desconectar();
+        }
+        return Listalocalidades;
     }
 
     @Override
     public Localidad listar(int id) throws SQLException {
-        return null;
+        ResultSet resultados = null;
+        Localidad localidad = null;
+
+        try {
+            conexion.conectar();
+            consulta = conexion.conn.prepareStatement(select_with_id);
+            consulta.setInt(1, id);
+            resultados = consulta.executeQuery();
+            if (resultados.next()) {
+                int k_localidad = resultados.getInt(1);
+                int ciudad_k_ciudad = resultados.getInt(2);
+                String n_localidad = resultados.getString(3);
+
+                localidad = new Localidad(k_localidad, ciudad_k_ciudad,n_localidad);
+                logger.info("Se trajo el localidad con identificacion: " +k_localidad  + ": " + localidad);
+            }
+        } catch (Exception e) {
+            logger.info("Se presento un error al traer el localidad con identificacion: " + id + " ," + e);
+        } finally {
+            resultados.close();
+            consulta.close();
+            conexion.desconectar();
+        }
+        return localidad;
     }
 
-    // Terminar desde aqui
     @Override
     public Localidad agregar(Localidad Localidad) throws SQLException {
-
-        return null;
+        try {
+            conexion.conectar();
+            consulta = conexion.conn.prepareStatement(insert);
+            consulta.setInt(1, Localidad.getK_localidad());
+            consulta.setInt(2, Localidad.getCiudad_k_ciudad());
+            consulta.setString(3, Localidad.getN_localidad());
+            consulta.execute();
+            logger.info("Se guardo el localidad:" + Localidad.toString());
+        } catch (Exception e) {
+            logger.warning("No se pudo guardar el localidad, " + e);
+        } finally {
+            consulta.close();
+            conexion.desconectar();
+        }
+        return Localidad;
     }
 
     @Override
@@ -87,6 +144,22 @@ public class LocalidadDAOpostgres implements IDao<Localidad> {
 
     @Override
     public Localidad actualizar(Localidad Localidad) throws SQLException {
+        
+        try {
+            conexion.conectar();
+            consulta = conexion.conn.prepareStatement(update);
+            consulta.setInt(3, Localidad.getK_localidad());
+            consulta.setInt(1, Localidad.getCiudad_k_ciudad());
+            consulta.setString(3, Localidad.getN_localidad());
+
+            consulta.executeUpdate();
+            logger.info("se actualizó el localidad " + Localidad.getK_localidad() + " a " + Localidad.toString());
+        } catch (Exception e) {
+            logger.warning("No se pudo actualizar la localidad, " + e);
+        } finally {
+            consulta.close();
+            conexion.desconectar();
+        }
         return Localidad;
     }
 
