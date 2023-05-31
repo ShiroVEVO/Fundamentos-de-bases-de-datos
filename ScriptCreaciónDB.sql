@@ -175,20 +175,20 @@ ON mydb.EstacioTieneBicicleta_has_Viaje (Viaje_k_Viaje);
 CREATE INDEX fk_EstacioTieneBicicleta_has_Viaje_EstacioTieneBicicleta1_idx
 ON mydb.EstacioTieneBicicleta_has_Viaje (EstacioTieneBicicleta_fk_Estacion, EstacioTieneBicicleta_fk_Bicicleta);
 
--- INSERSIÓN PLANES 
+-- INSERCIÓN PLANES 
 INSERT INTO mydb.Plan VALUES (1,1300,2500,0,999,24,999,999,0,150,'Esporadico');
 INSERT INTO mydb.Plan VALUES (2,890,890,9990,1,60,4,1,3990,150,'Diario');
 INSERT INTO mydb.Plan VALUES (3,999,999,31990,30,60,4,0,0,75,'Mensual');
 INSERT INTO mydb.Plan VALUES (4,999,999,229900,364,60,4,0,0,75,'Anual');
 
--- INSERSIÓN CUENTA
+-- INSERCIÓN CUENTA
 INSERT INTO mydb.cuenta VALUES (1,0,0,'Activa','pass','email@email.com',1);
 INSERT INTO mydb.cuenta VALUES (2,0,0,'Activa','pass2','email2@email.com',1);
 INSERT INTO mydb.cuenta VALUES (3,0,0,'Activa','pass3','email3@email.com',1);
 INSERT INTO mydb.cuenta VALUES (4,0,0,'Activa','pass4','email4@email.com',1);
 INSERT INTO mydb.cuenta VALUES (5,100,100,'Activa', 'contraseña123', 'adrianstratos@gmail.com', 2);
 
--- INSERSIÓN USUARIO 
+-- INSERCIÓN USUARIO 
 INSERT INTO mydb.usuario VALUES(1010043148,'CC','2023-05-23 12:34:56','Colombiano', 3125544942,'M','Famisanar','Adrian','Stiven','Olmos','Ardila',5);
 INSERT INTO mydb.usuario VALUES(1923810412,'CC','2023-05-23 12:34:56','Venezolano', 2147483647,'F','Servisalud','Adriana','Maria','Gutierrez','Paez',1);
 INSERT INTO mydb.usuario VALUES(1314689031,'CC','2023-05-23 12:34:56','Colombiano', 3113494567,'M','Sura','Juan','Manuel','Ortega','Sanchez',2);
