@@ -1,11 +1,10 @@
-window.onload = function(){
+  window.onload = function(){
     let btnGuardar = document.querySelector("#guardar");
     let data;
     let url;
     btnGuardar.addEventListener("click",function(e){
         e.preventDefault();
         let form = document.querySelector(".sectionIngreso form");
-        console.log(form);
         let organizador = [];
         for(let i = 0; i < form.length-1; i++){
             organizador.push(form[i].value);
@@ -22,6 +21,22 @@ window.onload = function(){
                 correoElectronico: organizador[6]
             }
             url = '/cuenta/guardar';
+
+        }else if(form[0].id == "IDPlan"){
+            data = {
+                k_plan: organizador[0],
+                tiempoSuscripcion: organizador[1],
+                duracionMaxViaje: organizador[2],
+                cantidadMaxViajes: organizador[3],
+                viajesExtra: organizador[4],
+                valorRetiroMecanica: organizador[5],
+                valorRetiroElectrica: organizador[6],
+                tarifaSuscripcion: organizador[7],
+                valorViajeExtra: organizador[8],
+                valorMinAdicional: organizador[9],
+                nombre: organizador[10],
+            }
+            url = '/plan/guardar';
         }else{
             data = {
                 identificacion: organizador[0],
@@ -34,7 +49,7 @@ window.onload = function(){
                 segundoNombre: organizador[7],
                 primerApellido: organizador[8],
                 segundoApellido: organizador[9],
-                fechaNacimiento: obtenerTimestamp(organizador[10]),
+                fechaNacimiento: organizador[10],
                 sexo: organizador[11],
             }
             url = '/usuario/guardar';
@@ -51,16 +66,12 @@ window.onload = function(){
             return response.json();
         })
         .then(function(data){
+            console.log("guardado con exito");
             alert("guardado con exito");
             location.reload();
         })
     })
 }
 
-function obtenerTimestamp() {
-    var fechaInput = document.getElementById("fecha").value;
-    var fecha = new Date(fechaInput);
-    var timestamp = fecha.getTime() / 1000; // Convertir a segundos dividido por 1000
-    console.log(timestamp);
-  }
+
 

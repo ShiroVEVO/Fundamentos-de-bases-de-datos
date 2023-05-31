@@ -78,7 +78,7 @@ public class CuentaDAOpostgres implements IDao<Cuenta> {
                 int plan_k_plan = resultados.getInt(7);
                 Cuenta cuenta = new Cuenta(k_cuenta, plan_k_plan, saldoFinal, saldoInicial, estado, contraseña,
                         correoElectronico);
-                logger.info("Se trajo una cuenta: " + cuenta);
+                // logger.info("Se trajo una cuenta: " + cuenta);
                 ListaCuentas.add(cuenta);
             }
         } catch (Exception e) {
@@ -110,7 +110,7 @@ public class CuentaDAOpostgres implements IDao<Cuenta> {
                 int plan_k_plan = resultados.getInt(7);
                 cuenta = new Cuenta(k_cuenta, plan_k_plan, saldoFinal, saldoInicial, estado, contraseña,
                         correoElectronico);
-                logger.info("Se trajo la cuenta con id: " + id + ": " + cuenta);
+                // logger.info("Se trajo la cuenta con id: " + id + ": " + cuenta);
             }
         } catch (Exception e) {
             logger.info("Se presento un error al traer la cuenta con id: " + id + " ," + e);

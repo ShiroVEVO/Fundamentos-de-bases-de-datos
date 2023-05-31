@@ -62,11 +62,49 @@ fetch("/usuario")
             borrarUsuario(botonesEliminarUsuarios[i].attributes[2].value);
         });
     }
-    let botonesActualizarUsuario = document.querySelectorAll('.btnActualizarUsuario');
-        for(let i = 0; i < botonesActualizarUsuario.length; i++){
-            botonesActualizarUsuario[i].addEventListener("click",function(){
-                actualizarUsuario(botonesActualizarUsuario[i].attributes[2].value);
+    let botonesActualizarUsuarios = document.querySelectorAll('.btnActualizarUsuario');
+        for(let i = 0; i < botonesActualizarUsuarios.length; i++){
+            botonesActualizarUsuarios[i].addEventListener("click",function(){
+                actualizarUsuario(botonesActualizarUsuarios[i].attributes[2].value);
             });
         }
 })
+
+fetch("/plan")
+.then(function(response){
+    return response.json();})
+.then(function(data){
+    let tablaPlanes = document.querySelector("#BodyTablaPlanes");
+    for(let i = 0; i < data.length; i++){
+        tablaPlanes.innerHTML +=
+        "<tr id=\"registroPlanKey" + data[i].k_plan + "\">" +
+            "<th>" + data[i].k_plan + "</th>" +    
+            "<th>" + data[i].valorRetiroMecanica + "</th>" +
+            "<th>" + data[i].valorRetiroElectrica + "</th>" +
+            "<th>" + data[i].tarifaSuscripcion + "</th>" +
+            "<th>" + data[i].tiempoSuscripcion + "</th>" +
+            "<th>" + data[i].duracionMaxViaje + "</th>" +
+            "<th>" + data[i].cantidadMaxViajes + "</th>" +
+            "<th>" + data[i].viajesExtra + "</th>" +
+            "<th>" + data[i].valorViajeExtra + "</th>" +
+            "<th>" + data[i].valorMinAdicional + "</th>" +
+            "<th>" + data[i].nombre + "</th>" +
+            "<th><input type=\"button\" class=\"btn btn-primary btnActualizarPlan\" id=\"" + data[i].k_plan + "\" value=\"✏\"></input></th>" +
+            "<th><input type=\"button\" class=\"btn btn-danger btnEliminarPlan\" id=\"" + data[i].k_plan + "\" value=\"❌\"></input></th>" +
+        "</tr>";
+    }
+    let botonesEliminarPlanes = document.querySelectorAll('.btnEliminarPlan');
+    for(let i = 0; i < botonesEliminarPlanes.length; i++){
+        botonesEliminarPlanes[i].addEventListener("click",function(){
+            borrarPlan(botonesEliminarPlanes[i].attributes[2].value);
+        });
+    }
+    let botonesActualizarPlanes = document.querySelectorAll('.btnActualizarPlan');
+        for(let i = 0; i < botonesActualizarPlanes.length; i++){
+            botonesActualizarPlanes[i].addEventListener("click",function(){
+                actualizarPlan(botonesActualizarPlanes[i].attributes[2].value);
+            });
+        }
+})
+
 }
