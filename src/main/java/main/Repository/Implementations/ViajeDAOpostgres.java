@@ -33,7 +33,7 @@ public class ViajeDAOpostgres implements IDao<Viaje> {
             + "ON UPDATE NO ACTION);"
             + "CREATE INDEX fk_Viaje_Cuenta1_idx"
             + "ON mydb.Viaje (Cuenta_k_Cuenta);";
-    private static final String select = "SELECT * FROM mydb.viaje;";
+    private static final String select = "SELECT * FROM mydb.viaje ORDER BY k_viaje;";
     private static final String select_with_id = "SELECT * FROM mydb.viaje WHERE k_viaje = ?;";
     private static final String insert = "INSERT INTO mydb.viaje VALUES(?,?,?,?,?);";
     private static final String delete = "DELETE FROM mydb.viaje WHERE k_viaje= ?;";
@@ -67,10 +67,10 @@ public class ViajeDAOpostgres implements IDao<Viaje> {
 
             while (resultados.next()) {
                 int k_viaje = resultados.getInt(1);
-                int cuenta_k_cuenta = resultados.getInt(2);
-                java.sql.Timestamp f_entrega = resultados.getTimestamp(3);
-                java.sql.Timestamp f_desbloqueo = resultados.getTimestamp(4);
-                double costo = resultados.getDouble(5);
+                java.sql.Timestamp f_entrega = resultados.getTimestamp(2);
+                java.sql.Timestamp f_desbloqueo = resultados.getTimestamp(3);
+                double costo = resultados.getDouble(4);
+                int cuenta_k_cuenta = resultados.getInt(5);
 
                 Viaje viaje = new Viaje(k_viaje, cuenta_k_cuenta, f_entrega, f_desbloqueo,costo );
                 logger.info("Se trajo un viaje: " + viaje);
@@ -98,10 +98,10 @@ public class ViajeDAOpostgres implements IDao<Viaje> {
             resultados = consulta.executeQuery();
             if (resultados.next()) {
                 int k_viaje = resultados.getInt(1);
-                int cuenta_k_cuenta = resultados.getInt(2);
-                java.sql.Timestamp f_entrega = resultados.getTimestamp(3);
-                java.sql.Timestamp f_desbloqueo = resultados.getTimestamp(4);
-                double costo = resultados.getDouble(5);
+                java.sql.Timestamp f_entrega = resultados.getTimestamp(2);
+                java.sql.Timestamp f_desbloqueo = resultados.getTimestamp(3);
+                double costo = resultados.getDouble(4);
+                int cuenta_k_cuenta = resultados.getInt(5);
 
                 viaje = new Viaje(k_viaje, cuenta_k_cuenta, f_entrega, f_desbloqueo,costo);
                 logger.info("Se trajo el viaje con id: " + k_viaje + ": " + viaje);
@@ -122,10 +122,10 @@ public class ViajeDAOpostgres implements IDao<Viaje> {
             conexion.conectar();
             consulta = conexion.conn.prepareStatement(insert);
             consulta.setInt(1, viaje.getK_viaje());
-            consulta.setInt(2, viaje.getCuenta_k_cuenta());
-            consulta.setTimestamp(3, viaje.getF_entrega());
-            consulta.setTimestamp(4, viaje.getF_desbloqueo());
-            consulta.setDouble(5, viaje.getCosto());
+            consulta.setTimestamp(2, viaje.getF_entrega());
+            consulta.setTimestamp(3, viaje.getF_desbloqueo());
+            consulta.setDouble(4, viaje.getCosto());
+            consulta.setInt(5, viaje.getCuenta_k_cuenta());
 
             consulta.execute();
             logger.info("Se guardo el viaje:" + viaje.toString());
@@ -160,10 +160,10 @@ public class ViajeDAOpostgres implements IDao<Viaje> {
             consulta = conexion.conn.prepareStatement(update);
 
             consulta.setInt(5, viaje.getK_viaje());
-            consulta.setInt(1, viaje.getCuenta_k_cuenta());
-            consulta.setTimestamp(2, viaje.getF_entrega());
-            consulta.setTimestamp(3, viaje.getF_desbloqueo());
-            consulta.setDouble(4, viaje.getCosto());
+            consulta.setTimestamp(1, viaje.getF_entrega());
+            consulta.setTimestamp(2, viaje.getF_desbloqueo());
+            consulta.setDouble(3, viaje.getCosto());
+            consulta.setInt(4, viaje.getCuenta_k_cuenta());
             consulta.executeUpdate();
             logger.info("se actualizó el viaje " + viaje.getK_viaje() + " a " + viaje);
         } catch (Exception e) {

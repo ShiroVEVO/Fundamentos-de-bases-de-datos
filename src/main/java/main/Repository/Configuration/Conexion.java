@@ -18,7 +18,10 @@ public class Conexion {
         try {
             Class.forName(DRIVER);
             conn = DriverManager.getConnection(URL, USER, PASS);
+<<<<<<< Updated upstream
             // logger.info("Funciona la conexión, Viva cristo rey");
+=======
+>>>>>>> Stashed changes
         } catch (Exception e) {
             logger.info("Problema:" + e);
         }

@@ -37,7 +37,7 @@ public class EstacionDAOpostgres implements IDao<Estacion> {
     private static final String select_with_id = "SELECT * FROM mydb.estacion WHERE k_estacion = ?;";
     private static final String insert = "INSERT INTO mydb.estacion VALUES(?,?,?,?,?);";
     private static final String delete = "DELETE FROM mydb.estacion WHERE k_estacion= ?;";
-    private static final String update = "UPDATE mydb.viaje SET q_anclajesdisponibles = ?, q_anclajestotales = ?,"
+    private static final String update = "UPDATE mydb.estacion SET q_anclajesdisponibles = ?, q_anclajestotales = ?,"
     + "n_direccion = ?, localidad_k_localidad = ? WHERE k_estacion = ?;";
     
     @Override
@@ -70,8 +70,8 @@ public class EstacionDAOpostgres implements IDao<Estacion> {
                 int k_estacion = resultados.getInt(1);
                 int anclajesDisponibles = resultados.getInt(2);
                 int anclajesTotales = resultados.getInt(3);
-                int localidad_k_localidad = resultados.getInt(4);
-                String direccion = resultados.getString(5);
+                String direccion = resultados.getString(4);
+                int localidad_k_localidad = resultados.getInt(5);
 
                 Estacion estacion = new Estacion(k_estacion, anclajesDisponibles, anclajesTotales, localidad_k_localidad,direccion );
                 logger.info("Se trajo una estacion: " + estacion);
@@ -101,8 +101,8 @@ public class EstacionDAOpostgres implements IDao<Estacion> {
                 int k_estacion = resultados.getInt(1);
                 int anclajesDisponibles = resultados.getInt(2);
                 int anclajesTotales = resultados.getInt(3);
-                int localidad_k_localidad = resultados.getInt(4);
-                String direccion = resultados.getString(5);
+                String direccion = resultados.getString(4);
+                int localidad_k_localidad = resultados.getInt(5);
 
                 estacion = new Estacion(k_estacion, anclajesDisponibles, anclajesTotales, localidad_k_localidad,direccion);
                 logger.info("Se trajo la estacion con id: " + k_estacion + ": " + estacion);
@@ -164,8 +164,8 @@ public class EstacionDAOpostgres implements IDao<Estacion> {
             consulta.setInt(5, estacion.getK_estacion());
             consulta.setInt(1, estacion.getAnclajesDisponibles());
             consulta.setInt(2, estacion.getAnclajesTotales());
-            consulta.setInt(3, estacion.getLocalidad_k_localidad());
-            consulta.setString(4, estacion.getDireccion());
+            consulta.setString(3, estacion.getDireccion());
+            consulta.setInt(4, estacion.getLocalidad_k_localidad());
 
             consulta.executeUpdate();
             logger.info("se actualizó la estacion " + estacion.getK_estacion() + " a " + estacion);

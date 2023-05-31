@@ -199,5 +199,51 @@ INSERT INTO mydb.usuario VALUES(1314689031,'CC','2023-05-23 12:34:56','Colombian
 INSERT INTO mydb.usuario VALUES(1010283192,'CC','2023-05-23 12:34:56','Venezolano', 3211231689,'M','Saludcop','Santiago','Alberto','Villanueva','Lugo',3);
 INSERT INTO mydb.usuario VALUES(1679192311,'CC','2023-05-23 12:34:56','Colombiano', 3230101848,'M','Compensar','Esteban','Camilo','Paez','Mayorga',4);
 
--- ISERSIÓN de ciudad
+-- ISERCIÓN de ciudad
 INSERT INTO mydb.ciudad values (1, 'Bogotá', '2001-09-11 05:00:00', '2001-09-11 22:00:00');
+INSERT INTO mydb.ciudad values (2, 'Medellin', '2001-09-11 06:00:00', '2001-09-11 20:00:00');
+
+-- ISERCIÓN de localidad
+INSERT INTO mydb.localidad VALUES (1, 'Teusaquillo', 1);
+INSERT INTO mydb.localidad VALUES (2, 'Usme', 1);
+INSERT INTO mydb.localidad VALUES (3, 'Santa Fe', 1);
+
+-- INSERCIÓN de estaciones NOTA: el estado original debe ser consistente. Aquí se tiene en cuenta las bicicletas 
+-- que se agregarán a continuación.
+INSERT INTO mydb.estacion VALUES(1, 25, 30, 'Cr 100 No. 11-60', 1);
+INSERT INTO mydb.estacion VALUES(2, 5, 10, 'Cl 39SUR No. 41-19', 2);
+INSERT INTO mydb.estacion VALUES(3, 15, 20, 'Cl 29 No. 15-100', 3);
+
+-- INSERCIÓN Bicicletas y su rel con estación
+INSERT INTO mydb.bicicleta VALUES(1, 'Mecanica');
+INSERT INTO mydb.bicicleta VALUES(2, 'Mecanica');
+INSERT INTO mydb.bicicleta VALUES(3, 'Mecanica');
+INSERT INTO mydb.bicicleta VALUES(4, 'Mecanica');
+INSERT INTO mydb.bicicleta VALUES(5, 'Mecanica');
+INSERT INTO mydb.estaciotienebicicleta VALUES(1,1);
+INSERT INTO mydb.estaciotienebicicleta VALUES(1,2);
+INSERT INTO mydb.estaciotienebicicleta VALUES(1,3);
+INSERT INTO mydb.estaciotienebicicleta VALUES(1,4);
+INSERT INTO mydb.estaciotienebicicleta VALUES(1,5);
+
+INSERT INTO mydb.bicicleta VALUES(6, 'Mecanica');
+INSERT INTO mydb.bicicleta VALUES(7, 'Mecanica');
+INSERT INTO mydb.bicicleta VALUES(8, 'Mecanica');
+INSERT INTO mydb.bicicleta VALUES(9, 'Electrica');
+INSERT INTO mydb.bicicleta VALUES(10, 'Electrica');
+INSERT INTO mydb.estaciotienebicicleta VALUES(2,6);
+INSERT INTO mydb.estaciotienebicicleta VALUES(2,7);
+INSERT INTO mydb.estaciotienebicicleta VALUES(2,8);
+INSERT INTO mydb.estaciotienebicicleta VALUES(2,9);
+INSERT INTO mydb.estaciotienebicicleta VALUES(2,10);
+
+INSERT INTO mydb.bicicleta VALUES(11, 'Electrica');
+INSERT INTO mydb.bicicleta VALUES(12, 'Electrica');
+INSERT INTO mydb.bicicleta VALUES(13, 'Electrica');
+INSERT INTO mydb.bicicleta VALUES(14, 'Mecanica');
+INSERT INTO mydb.bicicleta VALUES(15, 'Mecanica');
+INSERT INTO mydb.estaciotienebicicleta VALUES(3,11);
+INSERT INTO mydb.estaciotienebicicleta VALUES(3,12);
+INSERT INTO mydb.estaciotienebicicleta VALUES(3,13);
+INSERT INTO mydb.estaciotienebicicleta VALUES(3,14);
+INSERT INTO mydb.estaciotienebicicleta VALUES(3,15);
